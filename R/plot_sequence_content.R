@@ -19,7 +19,7 @@ plotGC <- function(name){
   #plot the sequence content ATGC in one graph
 
 
-  p_content <- ggplot(data=organized_sequence_content,aes(x=base,y=value,colour=key))+geom_line()
+  p_content <- ggplot(data=organized_sequence_content,aes(x=base,y=value,colour=key))+geom_line()+ggtitle("Per base sequence content")
   p_content
 
   ggsave("content.pdf",plot=p_content)

@@ -1,7 +1,8 @@
-sequence_content <- function(name){
+sequence_content <- function(name,content){
 
   #load the data seqTool
   fseq<- seqTools::fastqq(name)
-  nucCont_seq <- seqTools::nucFreq(fseq,1)
-  return(nucCont_seq)
+  nucCount_seq <- seqTools::nucFreq(fseq,1)
+  specific_content <- nucCount_seq[tolower(content),]
+  return(as.vector(specific_content))
 }

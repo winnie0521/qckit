@@ -4,7 +4,6 @@ GC_content <- function(name){
   fastq <- ShortRead::readFastq(name)
   ##as a sequence content matrix
   contentcycle<-as(ShortRead::sread(fastq), "matrix")
-
   contentcycle_gc <- rep(0,nrow(contentcycle))
 
   for (j in 1:nrow(contentcycle)){
@@ -13,5 +12,8 @@ GC_content <- function(name){
         contentcycle_gc[j]  = contentcycle_gc[j]+1
     }
   }
-  return(contentcycle_gc)
+
+  #pdf("gc_density.pdf")
+  hist(contentcycle_gc,breaks=ncol(contentcycle))
+  #dev.off()
 }

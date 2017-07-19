@@ -1,5 +1,8 @@
-overrepresented_sequence <- function(){
+overrepresented_sequence <- function(name){
   # use system to extract unique counts and count them
-  a<-system("awk 'NR%4==2' 10^5_reads_test.fq | cut -c 1-50 | sort ",intern = TRUE)
+  default <- "gunzip -c defaultname | awk 'NR%4==2' | sort |uniq -c | sort -r "
+  command <- sub("defaultname",name,default)
+  a<-system(command,intern = TRUE)
   over_rep <- as.data.frame(a)
+  return(over_rep)
 }
