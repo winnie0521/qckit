@@ -1,26 +1,19 @@
-plotGC <- function(name){
+plotSeqContent<- function(name){
+  #read the data ShortRead
 
-  # n content from FastQCR
+  fastq <- ShortRead::readFastq(name)
+  ##as a sequence content matrix
+  contentcycle<-as(ShortRead::sread(fastq), "matrix")
+  organized_contentcycle <- apply(contentcycle,2,add_N_function)
 
-  per_base_sequence_content <- as.data.frame(qc_read(name,"Per base sequence content"))
+  content_cycle <- as.data.frame(t(as.data.frame(organized_contentcycle)))/nrow(contentcycle)*ncol(contentcycle)
+  content_cycle$base <- seq(1,nrow(content_cycle),1)
 
-  per_base_n <- as.data.frame(qc_read(name,"Per base N content"))
+  organized_content_cycle <- content_cycle%>%tidyr::gather(key,value,"A","T","G","C","N")
 
-  per_base_n_content <- per_base_n$per_base_n_content.N.Count
+  p1 <- ggplot2::ggplot(data=organized_content_cycle,ggplot2::aes(x=base,y=value,colour=key))+ggplot2::geom_line()
+  p2 <- p1 + ggplot2::labs(x = "Position", y= "Percentage of content", title = "Per base sequence content percentage")
+  p_content <- p2 + ggplot2::guides(fill=ggplot2::guide_legend(title="Sequence Content"))
 
-  per_base_sequence_content_N = cbind(per_base_sequence_content,per_base_n_content)
-
-  colnames(per_base_sequence_content_N)=c("base","contentG","contentA","contentT","contentC","contentN")
-
-  #organize the dataframe
-
-  organized_sequence_content <-per_base_sequence_content_N%>%gather(key,value,contentG,contentA,contentT,contentC,contentN)
-
-  #plot the sequence content ATGC in one graph
-
-
-  p_content <- ggplot(data=organized_sequence_content,aes(x=base,y=value,colour=key))+geom_line()+ggtitle("Per base sequence content")
-  p_content
-
-  ggsave("content.pdf",plot=p_content)
+  return(p_content)
 }
