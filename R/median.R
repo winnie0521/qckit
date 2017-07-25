@@ -1,4 +1,4 @@
-seq_meidan<- function(x){
+seq_median<- function(x){
 
   #load the data seqTool
   fseq<- seqTools::fastqq(x)
