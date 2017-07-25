@@ -1,4 +1,4 @@
-plot_quality_score <- function(name){
+plot_quality_score.2 <- function(name){
   #read the data ShortRead
   fastq <- ShortRead::readFastq(name)
   ## as a quality score matrix
