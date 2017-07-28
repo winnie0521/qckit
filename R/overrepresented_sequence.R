@@ -3,7 +3,7 @@ overrepresented_sequence <- function(name){
   default <- "gunzip -c defaultname | awk 'NR%4==2' | sort |uniq -c | sort -r > over_rep_reads.txt "
   command <- sub("defaultname",name,default)
   system(command,intern = TRUE)
-  over_rep <- read.table("over_rep_reads.txt")
-  over_rep_table <- as.data.frame(over_rep%>%arrange(desc(V1)))
+  over_rep <- data.table::fread("over_rep_reads.txt")
+  over_rep_table <- as.data.frame(over_rep%>%dplyr::arrange(desc(V1)))
   return(over_rep_table)
 }

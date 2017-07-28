@@ -1,8 +1,5 @@
-plot_perseq_quality <- function(name){
-  #read the data ShortRead
-  fastq <- ShortRead::readFastq(name)
-  ## as a quality score matrix
-  scorecycle<-as(Biostrings::quality(fastq), "matrix")
+plot_perseq_quality <- function(scorecycle){
+
   scorecycle_df <- as.data.frame(scorecycle)
   colnames(scorecycle_df) = seq(1,ncol(scorecycle),1)
 
