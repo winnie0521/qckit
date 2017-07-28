@@ -8,7 +8,7 @@ scorecycle <- function(){
   # remove the 101th column
   scorecycle <- scorecycle[,-c("V101")]
   conn <- dbConnect(RSQLite::SQLite(),"test_file.sqlite")
-  dbWriteTable(conn,"scoreTableFull",scorecycle[,-c("V101")], row.names=F)
+  dbWriteTable(conn,"scoreTableFull",scorecycle, row.names=F)
   myquery <-"select * from scoreTableFull"
   scoredata <-dbGetQuery(conn,myquery)
   score_cycle <- lapply( scoredata, FUN = function(x) {sapply(x, as.numeric(charToRaw(x)))} )
