@@ -4,9 +4,9 @@ scorecycle <- function(){
   #command <- sub("10^6_reads_test.fq.gz",name,commanddefault)
   #system(command,intern = TRUE)
 
-  scorecycle <- data.table::fread("data/full.qual.csv",header=F,sep = ",")
+  scorecycle <- data.table::fread("Data/full.qual.csv",header=F,sep = ",")
   # remove the 101th column
-  scorecycle <- scorecycle[,-c("V101")]
+  #scorecycle <- scorecycle[,-c("V101")]
   conn <- dbConnect(RSQLite::SQLite(),"test_file.sqlite")
   dbWriteTable(conn,"scoreTableFull",scorecycle, row.names=F)
   myquery <-"select * from scoreTableFull"
