@@ -7,7 +7,6 @@ contentcycle <- function(){
 
   contentcycle <- data.table::fread("data/full.reads.csv",header=F,sep = ",")
   # remove the 101th column
-  contentcycle <- contentcycle[,-c("V101")]
   conn <- dbConnect(RSQLite::SQLite(),"test_file.sqlite")
   dbWriteTable(conn,"contentTableFull",contentcycle, row.names=F)
   myquery <-"select * from contentTableFull"
