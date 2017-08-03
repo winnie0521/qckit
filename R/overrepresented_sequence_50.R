@@ -4,6 +4,6 @@ overrepresented_sequence_50 <- function(name){
   command <- sub("defaultname",name,default)
   system(command,intern = TRUE)
   over_rep_50 <- data.table::fread("over_rep_reads_50.txt")
-  over_rep_table_50 <- as.data.frame(over_rep%>%dplyr::arrange(desc(V1)))
+  over_rep_table_50 <- as.data.frame(over_rep_50%>%dplyr::arrange(desc(V1)))
   return(over_rep_table_50)
 }
