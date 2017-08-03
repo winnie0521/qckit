@@ -16,7 +16,7 @@ basic_stat <- function(name){
     myquery_default <-"select V1 from scoreTableFull"
     myquery <- sub("V1",paste("V",i,sep=""),myquery_default)
     scoredata <- dbGetQuery(conn,myquery)
-    asc.dat <-data.frame(list(chr=names(asc(unique(scoredata[,1]))),val=asc(unique(scoredata[,1]))))
+    asc.dat <-data.frame(list(chr=names(gtools::asc(unique(scoredata[,1]))),val=gtools::asc(unique(scoredata[,1]))))
     scorecycle <- merge(scoredata,asc.dat,by.x=sub("1",i,"V1"),by.y="chr",all.x=T)
     score_mean[i] = mean(scorecycle$val)-33
     score_median[i] = median(scorecycle$val)-33
@@ -27,4 +27,8 @@ basic_stat <- function(name){
     score_q90[i] <- quantile(scorecycle$val,0.90)-33
     score_q99[i] <- quantile(scorecycle$val,0.99)-33
   }
+    basic_stat <- rbind(score_mean,score_median,score_q01,score_q10,score_q25,score_q75,score_q90,score_q99)
+    colnames(basic_stat) <- seq(1,nc,1)
+    return(basic_stat)
+    RSQLite::dbDisconnect(conn)
 }
