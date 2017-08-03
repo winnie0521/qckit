@@ -13,7 +13,7 @@ basic_stat <- function(name){
 
 
   for (i in 1:nc){
-    myquery_default <-paste("select V1 from ", paste(name,"_score",sep=""))
+    myquery_default <-"select V1 from scoreTableFull"
     myquery <- sub("V1",paste("V",i,sep=""),myquery_default)
     scoredata <- dbGetQuery(conn,myquery)
     asc.dat <-data.frame(list(chr=names(asc(unique(scoredata[,1]))),val=asc(unique(scoredata[,1]))))
