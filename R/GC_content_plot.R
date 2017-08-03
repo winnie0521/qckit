@@ -1,19 +1,27 @@
-GC_content <- function(contentcycle){
-  #read the data ShortRead
+GC_content <- function(name){
 
-  contentcycle_gc <- rep(0,nrow(contentcycle))
+  conn <- RSQLite::dbConnect(RSQLite::SQLite(),"test_file.sqlite")
+  cols <- paste(paste("V",seq(1:100),sep=""), collapse=" || ")
+  gcquerydefault <- paste("SELECT ",cols, " as gc_table FROM contentTableFull ")
+  gc_result<-(RSQLite::dbGetQuery(conn,gcquerydefault))
+  gc_list <-sapply(gc_result$gc_table,function(x) {table(unlist(strsplit(x,'')))})
+  gc_percent <- sapply(gc_list[1:10], function(x)
+  {
+    y<-c(0,0,0,0)
+    if ( "G" %in% names(x)){ y[1] <- x[names(x)=="G"]}
+    if ("C" %in% names(x)){y[2] <-x[names(x)=="C"]}
+    y[3] <-sum(x)
+    y[4] = y[1]+y[2]
+    return(y)
 
-  for (j in 1:nrow(contentcycle)){
-    for (i in 1:ncol(contentcycle)){
-      if (contentcycle[j,i]=="G"|contentcycle[j,i] == "C")
-        contentcycle_gc[j]  = contentcycle_gc[j]+1
-    }
-  }
+  })
 
-  gc <- as.data.frame(contentcycle_gc)
-  colnames(gc) = c("meanGC")
+  gc <- gc_percent
+  gc_df <- as.data.frame(gc[4,])
+  colnames(gc_df) = c("meanGC")
 
   p1 <- ggplot2::ggplot(data=gc, ggplot2::aes(meanGC)) +ggplot2::geom_histogram(breaks=seq(0, ncol(contentcycle), by=1))
   p_GC <- p1 + ggplot2::labs(title = "Histograms for GC content percentage", x= "Mean GC content percentage" , y = "Frequency")
   return(p_GC)
+
 }
