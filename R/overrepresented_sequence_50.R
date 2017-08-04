@@ -5,5 +5,6 @@ overrepresented_sequence_50 <- function(name){
   system(command,intern = TRUE)
   over_rep_50 <- data.table::fread("over_rep_reads_50.txt")
   over_rep_table_50 <- as.data.frame(over_rep_50%>%dplyr::arrange(desc(V1)))
+  write.csv(over_rep_table_50,file = "overrepresented_sequence_50.csv")
   return(over_rep_table_50)
 }

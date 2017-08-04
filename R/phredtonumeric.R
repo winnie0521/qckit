@@ -29,6 +29,7 @@ basic_stat <- function(name){
   }
     basic_stat <- rbind(score_mean,score_median,score_q01,score_q10,score_q25,score_q75,score_q90,score_q99)
     colnames(basic_stat) <- seq(1,nc,1)
+    write.csv(basic_stat,file = "basic_statistics.csv")
     return(basic_stat)
     RSQLite::dbDisconnect(conn)
 }
