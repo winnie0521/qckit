@@ -1,5 +1,5 @@
 kmer <- function(name,kcount){
-  defaultcommand <- "gunzip -c FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz | split -l 10000"
+  defaultcommand <- "gunzip -c FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz | split -l 1000000"
   command <- sub("FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz",name,defaultcommand)
   system(command,intern=TRUE)
   file_list <- list.files()
@@ -17,5 +17,6 @@ kmer <- function(name,kcount){
     rownames(fseq_count) = rownames(kmer_count)
   }
   file.remove(split_files)
+
   return(fseq_count)
 }
