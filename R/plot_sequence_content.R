@@ -1,3 +1,11 @@
+#' Plot the per position nucleotide content
+#' \code{plotSeqContent}
+#' @param  name the object that is the path to the gzipped FASTQ file
+#' @importMethodsFrom seqTools
+#' @importMethodsFrom ggplot2
+#' @importMethodsFrom reshape2
+#' @return ggplot line plot of all nucleotide content inclding  A, T, G, C and N
+
 plotSeqContent<- function(name){
   #read the data ShortRead
 

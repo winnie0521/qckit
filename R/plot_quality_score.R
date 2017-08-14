@@ -1,4 +1,9 @@
+#using the version 2, which plots boxplots from quantile,
+# save as a reference
+
+
 plot_quality_score <- function(name){
+
 
 
   StatBoxplotCustom <- ggplot2:::ggproto("StatBoxplotCustom", ggplot2::Stat,

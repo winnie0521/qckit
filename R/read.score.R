@@ -1,3 +1,11 @@
+#' Read results quality score matrix from gzipped FASTQ file and save the read matrix to SQLite database
+#' @param name the object that is the path to gzipped file
+#' @importMethodsFrom RSQLite
+#' @return data frame obtained by SQLite command from the saved table
+#' @example
+#' scorecycle("full.fq.gz")
+
+
 scorecycle <- function(name){
   # write tables to csv files
   #commanddefault <- 'gunzip -c 10^6_reads_test.fq.gz | paste - - - - | cut -f 4 |awk "{split($0, chars, /"/" ) ;for (i=1; i <= length($0); i++) {printf("%s,", chars[i])}; printf("\n")}" > full.qual.csv'

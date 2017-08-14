@@ -1,3 +1,15 @@
+#' create a data frame of mean, median and quatiles of the quality score per position
+#' Write the basic statistics data frame to csv(current version)
+#' Write the basic statistics data frame to a table in SQLite
+#' @param name the object that is the path to the gzipped FASTQ file
+#' @importMethodsFrom RSQLite
+#' @return basic statistics data frame
+#' @return csv file and a SQLite table named
+#' @example
+#' basic_stat("full.fq.gz")
+
+
+
 basic_stat <- function(name){
     nc <- ncolumn(name)
     conn <- dbConnect(RSQLite::SQLite(),"test_file.sqlite")

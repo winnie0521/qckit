@@ -1,15 +1,12 @@
+#' Generate a boxplot of the per posistion quality score from basic statistics results
+#' @param name the object that is the path to the gzipped FASTQ file
+#' @importMethodsFrom ggplot2
+#' @return boxplot of per position quality score distribution
+#' @example
+#' plot_quality_score.2("full.fq.gz")
+
+
 plot_quality_score.2 <- function(name){
-
-  #df <- data.frame(matrix(ncol = ncol(scorecycle), nrow = 5))
-
-  #df[1,] <- apply(scorecycle,2,min)
-  #df[1,] <- apply(scorecycle,2,function(x) quantile(x,0.01))
-  #df[2,] <- apply(scorecycle,2,function(x) quantile(x,0.25))
-  #df[3,] <- apply(scorecycle,2,median)
-  #df[4,] <- apply(scorecycle,2,function(x) quantile(x,0.75))
-  #df[5,] <- apply(scorecycle,2,max)
-  #df[5,] <- apply(scorecycle,2,function(x) quantile(x,0.99))
-  #rownames(df) <- c("min","q25","median","q75","max")
 
   df <- basic_stat(name)[c("score_q01","score_q25","score_median","score_q75","score_q99"),]
 

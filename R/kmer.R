@@ -1,3 +1,12 @@
+#' Extract kmers and kmer counts from FASTQ file to a data frame
+#' @param name the object that is the path to  gzipped FASTQ file
+#' @param kcount the object that is the length of kmer that is in interest
+#' @importMethodsFrom seqTools
+#' @return data frame of kmer and corresponding kmer count of the length of choice
+#' @example
+#' kmer("full.fq.gz",7)
+
+
 kmer <- function(name,kcount){
   defaultcommand <- "gunzip -c FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz | split -l 1000000"
   command <- sub("FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz",name,defaultcommand)

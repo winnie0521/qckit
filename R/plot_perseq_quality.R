@@ -1,3 +1,5 @@
+#using the version 2, which plots boxplots from quantile,
+# save as a reference
 plot_perseq_quality <- function(scorecycle){
 
   scorecycle_df <- as.data.frame(scorecycle)

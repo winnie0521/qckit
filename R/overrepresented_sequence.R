@@ -1,3 +1,12 @@
+#' Sort all sequences per read by count along with a density plot of all counts with top 5 repreated sequences marked
+#' @param name the object that is the path to gzippped FASTQ file
+#' @return  table of sequnces sortted by count
+#' @return  density plot of sequence length with top 5 marked by rugs, saved as PDF file
+#' @importMethodsFrom dplyr
+#' @importMethodsFrom plot
+#' @example overrepresented_sequence("full.fq.gz")
+
+
 overrepresented_sequence <- function(name){
   # use system to extract unique counts and count them
   default <- "gunzip -c defaultname | awk 'NR%4==2' | sort |uniq -c | sort -r > over_rep_reads.txt "
@@ -6,8 +15,6 @@ overrepresented_sequence <- function(name){
   over_rep <- data.table::fread("over_rep_reads.txt")
   over_rep_table <- as.data.frame(over_rep%>%dplyr::arrange(desc(V1)))
   write.csv(over_rep_table,file = "overrepresented_sequence.csv")
-
-  hist(as.numeric(over_rep_table$V1),breaks=100)
 
 
   pdf(file = "OverrepresentedSequencePlot.pdf")
