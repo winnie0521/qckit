@@ -27,7 +27,7 @@ basic_stat <- function(nc,writefile=FAlSE){
   for (i in 1:nc){
     myquery_default <-"select V1 from scoreTableFull"
     myquery <- sub("V1",paste("V",i,sep=""),myquery_default)
-    scorecycle <- dbGetQuery(conn,myquery)
+    scorecycle <- dbGetQuery(conn,myquery)[,1]
     score_mean[i] = mean(scorecycle)-33
     score_median[i] = median(scorecycle)-33
     score_q01[i] <- quantile(scorecycle,0.01)-33
