@@ -10,13 +10,13 @@
 #' @importMethodsFrom qckit::dimensions
 #' @return ggplot line plot of all nucleotide content inclding  A, T, G, C and N
 
-plotSeqContent<- function(name,nr,nc){
+plotSeqContent<- function(fseq,nr,nc){
 
-  G_content<- sequence_content(name,"G")
-  C_content<- sequence_content(name,"C")
-  T_content<- sequence_content(name,"T")
-  A_content<- sequence_content(name,"A")
-  N_content<- sequence_content(name,"N")
+  G_content<- sequence_content(fseq,"G")
+  C_content<- sequence_content(fseq,"C")
+  T_content<- sequence_content(fseq,"T")
+  A_content<- sequence_content(fseq,"A")
+  N_content<- sequence_content(fseq,"N")
 
   df <- data.frame(G_content,C_content,T_content,A_content,N_content)/nr*nc
   dfm <- reshape2::melt(df)
