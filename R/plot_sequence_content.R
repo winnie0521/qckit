@@ -4,13 +4,14 @@
 #' @importMethodsFrom seqTools
 #' @importMethodsFrom ggplot2
 #' @importMethodsFrom reshape2
+#' @importMethodsFrom qckit::sequence_content
+#' @importMethodsFrom qckit::dimensions
 #' @return ggplot line plot of all nucleotide content inclding  A, T, G, C and N
 
 plotSeqContent<- function(name){
-  #read the data ShortRead
 
-  nc <- ncolumn(name)
-  nr <- nreads(name)
+  nc <- dimensions(name,"reads")
+  nr <- dimensions(name,"positions")
 
   G_content<- sequence_content(name,"G")
   C_content<- sequence_content(name,"C")

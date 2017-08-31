@@ -1,4 +1,5 @@
 test_that("Test mean",{
 
-  expect_equal(seq_mean("Data/10^5_reads_test.fq.gz"),manual_mean("Data/10^5_reads_test.fq.gz"))
+  expect_equal(seq_mean("Data/full.fq.gz")[1],31.4168)
+  expect_equal(seq_mean("Data/full.fq.gz")[5],36.6426)
 })
