@@ -4,11 +4,9 @@
 #' @example
 #' sequence_length("full.fq.gz")
 
-sequence_length <- function(name){
+sequence_length <- function(fseq){
 
-  fullseq <- seqTools::fastqq(name)
-
-  len_table <- as.data.frame(seqTools::seqLenCount(fullseq))
+  len_table <- as.data.frame(seqTools::seqLenCount(fseq))
   colnames(len_table) = c("count")
   len_table$seq_length = as.numeric(rownames(len_table))
 

@@ -8,9 +8,8 @@
 #' GC_content("full.fq.gz")
 
 
-GC_content <- function(name){
+GC_content <- function(nc){
 
-  nc = ncolumn(name)
   conn <- RSQLite::dbConnect(RSQLite::SQLite(),"test_file.sqlite")
   cols <- paste(paste("V",seq(1:100),sep=""), collapse=" || ")
   gcquerydefault <- paste("SELECT ",cols, " as gc_table FROM contentTableFull ")

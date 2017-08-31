@@ -28,14 +28,14 @@ basic_stat <- function(nc,writefile=FAlSE){
     myquery_default <-"select V1 from scoreTableFull"
     myquery <- sub("V1",paste("V",i,sep=""),myquery_default)
     scorecycle <- dbGetQuery(conn,myquery)[,1]
-    score_mean[i] = mean(scorecycle)-33
-    score_median[i] = median(scorecycle)-33
-    score_q01[i] <- quantile(scorecycle,0.01)-33
-    score_q10[i] <- quantile(scorecycle,0.10)-33
-    score_q25[i] <- quantile(scorecycle,0.25)-33
-    score_q75[i] <- quantile(scorecycle,0.75)-33
-    score_q90[i] <- quantile(scorecycle,0.90)-33
-    score_q99[i] <- quantile(scorecycle,0.99)-33
+    score_mean[i] = mean(scorecycle)
+    score_median[i] = median(scorecycle)
+    score_q01[i] <- quantile(scorecycle,0.01)
+    score_q10[i] <- quantile(scorecycle,0.10)
+    score_q25[i] <- quantile(scorecycle,0.25)
+    score_q75[i] <- quantile(scorecycle,0.75)
+    score_q90[i] <- quantile(scorecycle,0.90)
+    score_q99[i] <- quantile(scorecycle,0.99)
   }
     basic_stat <- rbind(score_mean,score_median,score_q01,score_q10,score_q25,score_q75,score_q90,score_q99)
     colnames(basic_stat) <- seq(1,nc,1)
