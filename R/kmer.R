@@ -7,7 +7,7 @@
 #' kmer("full.fq.gz",7)
 
 
-kmer <- function(name,kcount){
+kmer <- function(name,kcount,writefile=FALSE){
   defaultcommand <- "gunzip -c FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz | split -l 1000000"
   command <- sub("FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz",name,defaultcommand)
   system(command,intern=TRUE)
@@ -26,6 +26,6 @@ kmer <- function(name,kcount){
     rownames(fseq_count) = rownames(kmer_count)
   }
   file.remove(split_files)
-
+  if(writefile == TRUE){write.csv(file="file_kmer.csv",fseq_count)}
   return(fseq_count)
 }
