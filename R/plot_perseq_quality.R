@@ -9,6 +9,7 @@
 
 plot_perseq_quality <- function(nc){
 
+  conn <- dbConnect(RSQLite::SQLite(),"test_file.sqlite")
   command_part <- paste(paste("V",seq(1:nc),sep=""), collapse="+")
   gcquerydefault <- paste("SELECT (",command_part, ")/",nc," as gc_table FROM scoreTableFull",sep="")
   score_sequence_mean<-(RSQLite::dbGetQuery(conn,gcquerydefault))
