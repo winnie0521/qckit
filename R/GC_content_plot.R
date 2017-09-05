@@ -11,8 +11,8 @@
 GC_content <- function(nc){
 
   conn <- RSQLite::dbConnect(RSQLite::SQLite(),"test_file.sqlite")
-  cols <- paste(paste("V",seq(1:100),sep=""), collapse=" || ")
-  gcquerydefault <- paste("SELECT ",cols, " as gc_table FROM contentTableFull ")
+  cols <- paste(paste("V",seq(1:nc),sep=""), collapse=" || ")
+  gcquerydefault <- paste("SELECT ",cols, " as gc_table FROM contentTableFull")
   gc_result<-(RSQLite::dbGetQuery(conn,gcquerydefault))
   gc_list <-sapply(gc_result$gc_table,function(x) {table(unlist(strsplit(x,'')))})
   gc_percent <- sapply(gc_list[1:nc], function(x)

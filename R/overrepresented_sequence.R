@@ -17,7 +17,7 @@ overrepresented_sequence <- function(name){
   write.csv(over_rep_table,file = "overrepresented_sequence.csv")
 
 
-  pdf(file = "OverrepresentedSequencePlot.pdf")
+  pdf(file = "file2_OverrepresentedSequencePlot.pdf")
   plot(density(as.numeric(over_rep_table$V1)),main = "Overrepresented Sequence Histogram with top 5 rug",ylab="Density",xlab="Sequence Count")
   rug(over_rep_table$V1[1:5],col=2, lwd=3.5)
   dev.off()
