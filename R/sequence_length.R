@@ -1,6 +1,8 @@
 #' extract the sequence length per read and plot corresponding bar plot
 #' @param  name the object that is the path to the gzipped
 #' @return the plot of the sequence distribution among all reads
+#' @importMethodsFrom seqTools
+#' @importMethodsFrom ggplot2
 #' @example
 #' sequence_length("full.fq.gz")
 

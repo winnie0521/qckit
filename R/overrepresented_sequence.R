@@ -3,7 +3,6 @@
 #' @return  table of sequnces sortted by count
 #' @return  density plot of sequence length with top 5 marked by rugs, saved as PDF file
 #' @importMethodsFrom dplyr
-#' @importMethodsFrom plot
 #' @example overrepresented_sequence("full.fq.gz")
 
 

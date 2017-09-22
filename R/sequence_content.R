@@ -10,6 +10,6 @@
 sequence_content <- function(fseq,content){
 
   nucCount_seq <- seqTools::nucFreq(fseq,1)
-  specific_content <- seqTools::nucCount_seq[tolower(content),]
+  specific_content <- nucCount_seq[tolower(content),]
   return(as.vector(specific_content))
 }

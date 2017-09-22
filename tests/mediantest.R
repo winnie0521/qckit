@@ -1,6 +1,6 @@
 test_that("Test median",{
-
-  test_result <- expect_equal(seq_median("Data/full.fq.gz")[1],32)
-  test_result <- expect_equal(seq_median("Data/full.fq.gz")[3],37)
-  return(test_result)
+  basic_statistics <- read.csv("file2_basic_statistics.csv",header=TRUE,row.name=1)
+  quality_median_sr<-as.vector(as.matrix(basic_statistics["score_median",]))
+  expect_equal(quality_mean_sr[1],32)
+  expect_equal(quality_mean_sr[5],37)
 })

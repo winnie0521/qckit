@@ -1,5 +1,6 @@
 test_that("Test mean",{
-
-  expect_equal(seq_mean("Data/full.fq.gz")[1],31.4168)
-  expect_equal(seq_mean("Data/full.fq.gz")[5],36.6426)
+  basic_statistics <- read.csv("file2_basic_statistics.csv",header=TRUE,row.name=1)
+  quality_mean_sr<-as.vector(as.matrix(basic_statistics["score_mean",]))
+  expect_equal(quality_mean_sr[1],31.6704255759915)
+  expect_equal(quality_mean_sr[5],36.6971390522758)
 })

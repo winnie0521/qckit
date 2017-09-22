@@ -8,8 +8,9 @@
 
 
 
-contentcycle <- function(){
-  contentcycle <- data.table::fread("all_reads.seq.csv",header=F,sep = ",")
+contentcycle <- function(title){
+  file_path <- sub("all_reads",title,"all_reads.qual.seq.csv")
+  contentcycle <- data.table::fread(file_path,header=F,sep = ",")
   conn <- dbConnect(RSQLite::SQLite(),"test_file.sqlite")
   RSQLite::dbWriteTable(conn,"contentTableFull",contentcycle, row.names=F)
   RSQLite::dbDisconnect(conn)
