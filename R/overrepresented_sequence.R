@@ -8,6 +8,8 @@
 
 overrepresented_sequence <- function(name){
   # use system to extract unique counts and count them
+  # need to refactor and add in C ++ function
+
   default <- "gunzip -c defaultname | awk 'NR%4==2' | sort |uniq -c | sort -r > over_rep_reads.txt "
   command <- sub("defaultname",name,default)
   system(command,intern = TRUE)

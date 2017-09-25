@@ -8,6 +8,7 @@
 
 
 kmer <- function(name,kcount,writefile=FALSE){
+  #need to refactor and replace by c++ function
   defaultcommand <- "gunzip -c FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz | split -l 1000000"
   command <- sub("FCHF3TNBBXX_L2_Cord_Blood_F_L2V18DR-BC2_1.fq.gz",name,defaultcommand)
   system(command,intern=TRUE)
