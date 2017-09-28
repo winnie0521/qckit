@@ -11,6 +11,6 @@
 GC_content <- function(nc,gc_df,writefile=FALSE){
   p1 <- ggplot2::ggplot(data=gc_df, ggplot2::aes(meanGC)) +ggplot2::geom_histogram(breaks=seq(0, ncol(contentcycle), by=1))
   p_GC <- p1 + ggplot2::labs(title = "Histograms for GC content percentage", x= "Mean GC content percentage" , y = "Frequency")
-  if (writefile=TRUE){ggplot2::ggsave(file="GC_content.pdf",p_GC)}
+  if (writefile==TRUE){ggplot2::ggsave(file="GC_content.pdf",p_GC)}
   return(p_GC)
 }
