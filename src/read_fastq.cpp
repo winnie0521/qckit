@@ -153,7 +153,7 @@ timesTwo(42)
 
   while (std::getline(in, line)) {
     //std::cout << count <<  std::endl;
-    if ( buffer_count > buffer_size)
+    /*if ( buffer_count > buffer_size)
     {
       out_seq_buffer="";
     }
@@ -177,18 +177,18 @@ timesTwo(42)
       //std::cout << line <<  std::endl;
       for (std::string::iterator it = line.begin(); it != line.end(); ++it) {
         if (it == --line.end()) {
-          qual_char_file << *it;
-          qual_num_file << ascii_map[*it];
+          //qual_char_file << *it;
+          //qual_num_file << ascii_map[*it];
         } else {
-          qual_char_file << *it << ",";
-          qual_num_file << ascii_map[*it] << ",";
+          //qual_char_file << *it << ",";
+          //qual_num_file << ascii_map[*it] << ",";
         }
       }
-      qual_char_file << '\n';
-      qual_num_file << '\n';
+      //qual_char_file << '\n';
+      //qual_num_file << '\n';
 
       count = 1;
-    } else { count++; }
+    } else { count++; }*/
     buffer_count ++;
   }
   //Cleanup
