@@ -129,128 +129,103 @@ timesTwo(42)
   ascii_map['}'] = 92;
   ascii_map['~'] = 93;
 
-  /*if (argc < 2) {
-    std::cerr << "Usage: " << argv[0] << " <gzipped input file> <output_prefix>" << std::endl;
-  }*/
-  //Read from the first command line argument, assume it's gzipped
+  std::map<std::string, int> over_rep_map;
+  std::map<std::string,int>::iterator it;
+  std::map<int,std::vector<int> > qual_by_column;
+  std::map<int,std::vector<int> >::iterator qual_by_col_it;
 
-  //std::ifstream file(argv[1], std::ios_base::in | std::ios_base::binary);
-  //std::string out_prefix(argv[2]);
-  std::string seq_out = out_prefix + ".seq.csv";
-  std::string qual_char_out = out_prefix + ".qual.char.csv";
-  std::string qual_num_out = out_prefix + ".qual.num.csv";
-  std::ofstream seq_file, qual_char_file, qual_num_file;
+  //std::string seq_out = out_prefix + ".seq.csv";
+  //std::string qual_char_out = out_prefix + ".qual.char.csv";
+  //std::string qual_num_out = out_prefix + ".qual.num.csv";
+  //std::ofstream seq_file, qual_char_file, qual_num_file;
 
-  seq_file.open(seq_out.c_str());
+  std::string over_rep_out = out_prefix + ".over_rep.csv";
+  std::ofstream over_rep_file;
+
+  /*seq_file.open(seq_out.c_str());
   qual_char_file.open(qual_char_out.c_str());
-  qual_num_file.open(qual_num_out.c_str());
+  qual_num_file.open(qual_num_out.c_str());*/
+  over_rep_file.open(over_rep_out.c_str());
 
   gz::igzstream in(infile.c_str());
   std::string line;
-  std::string out_seq_buffer="";
-  std::string out_qual_buffer;
-  int count = 1, buffer_count = 1;
-
+  int count = 1, line_count =1;
+  //std::vector<int,std::vector<int> > base_counts;
+  std::vector<double> gc_percent_all;
   while (std::getline(in, line)) {
-    //std::cout << count <<  std::endl;
-    /*if ( buffer_count > buffer_size)
-    {
-      out_seq_buffer="";
-    }
-    if (count == 2) {
-      //std::cout << line <<  std::endl;
-      for (std::string::iterator it = line.begin(); it != line.end(); ++it)
+
+    if (count == 2)
+      {
+        it = over_rep_map.find(line);
+        if (it != over_rep_map.end())
         {
-
-        if (it == --line.end())
-        { out_seq_buffer.append(1,*it);
-          out_seq_buffer.append("\n"); }
-        else
-          {
-          out_seq_buffer.append(1,*it);
-          out_seq_buffer.append( ","); }
-      }
-
-    }
-
-    if (count == 4) {
-      //std::cout << line <<  std::endl;
-      for (std::string::iterator it = line.begin(); it != line.end(); ++it) {
-        if (it == --line.end()) {
-          //qual_char_file << *it;
-          //qual_num_file << ascii_map[*it];
-        } else {
-          //qual_char_file << *it << ",";
-          //qual_num_file << ascii_map[*it] << ",";
+          // if found increment by 1
+          over_rep_map.at(line) += 1;
         }
-      }
-      //qual_char_file << '\n';
-      //qual_num_file << '\n';
+        else
+        {
+          // if not found add new key and initialize to 1
+          over_rep_map.insert(std::pair<std::string, int>(line,1));
+        }
+        // iterating over each character in the string
+        std::string base_cmp;
+        //std::vector<int> counts_per_read;
+        int count_A=0, count_G=0, count_T=0, count_C=0, count_N=0;
+        for (std::string::iterator it = line.begin(); it != line.end(); ++it)
+          {
+            base_cmp.clear();
+            base_cmp.push_back(*it);
+            if (base_cmp.compare("A") ==0) { count_A +=1;}
+            else if (base_cmp.compare("T")==0) { count_T +=1;}
+            else if (base_cmp.compare("G")==0) { count_G +=1;}
+            else if (base_cmp.compare("C")==0) { count_C +=1;}
+            else if (base_cmp.compare("N")==0) { count_N +=1;}
+          }
+        double gc_percent = static_cast<double>(count_C+count_G)/static_cast<double>(count_A+count_T+count_G+count_C+count_N);
+        gc_percent_all.push_back(gc_percent);
+        /*counts_per_read.push_back(count_A);
+        counts_per_read.push_back(count_T);
+        counts_per_read.push_back(count_G);
+        counts_per_read.push_back(count_C);
+        counts_per_read.push_back(count_N);
+        base_counts.insert(line_count,counts_per_read);*/
 
+      }
+
+    if (count == 4)
+      {
+       // iterate over each value for quality
+       int pos_counter = 1;
+        for (std::string::iterator it = line.begin(); it != line.end(); ++it)
+          {
+           qual_by_col_it = qual_by_column.find(pos_counter);
+            if(qual_by_col_it != qual_by_column.end())
+            {
+              qual_by_column.at(pos_counter).push_back(ascii_map.find(*it)->second);
+            }
+            else
+            {
+              std::vector<int> tmp;
+              tmp.push_back(ascii_map.find(*it)->second);
+              qual_by_column.insert(std::pair<int, std::vector<int> >(pos_counter,tmp));
+            }
+          }
       count = 1;
-    } else { count++; }*/
-    buffer_count ++;
+      }
+    else
+      {
+      count++;
+      }
   }
   //Cleanup
   in.close();
-  seq_file.close();
-  qual_char_file.close();
-  qual_num_file.close();
-  //******************************************
-  //  Coding with Boost instead
-  //******************************************
-  /*boost::iostreams::filtering_istream inbuf;
-  inbuf.push(boost::iostreams::gzip_decompressor());
-  inbuf.push(file);
-  //Convert streambuf to istream
-  //Iterate lines
-  std::string line;
-  int count =1;
-  while(std::getline(inbuf, line))
-  {
-  //std::cout << count <<  std::endl;
-  if (count == 2 )
-  {
-  //std::cout << line <<  std::endl;
-  for ( std::string::iterator it=line.begin(); it!=line.end(); ++it)
-  {
 
-  if( it == --line.end())
-  { seq_file << *it;}
-  else {seq_file << *it << ",";}
-  }
-  seq_file << '\n';
-
-  }
-
-  if (count ==4)
-  {
-  //std::cout << line <<  std::endl;
-  for ( std::string::iterator it=line.begin(); it!=line.end(); ++it)
-  {
-  if( it == --line.end())
-  {
-  qual_char_file << *it;
-  qual_num_file << ascii_map[*it];
-  }
-  else
-  {
-  qual_char_file << *it << ",";
-  qual_num_file << ascii_map[*it] << ",";
-  }
-  }
-  qual_char_file << '\n';
-  qual_num_file << '\n';
-
-  count=1;
-  }
-  else{ count++ ;}
-  }
-  //Cleanup
-  file.close();
-  seq_file.close();
-  qual_char_file.close();
-  qual_num_file.close();*/
+  /*TODO
+    write over_rep sequences to file
+    return gc_percent vector
+    return per column mean, median and quantile
+   */
+  over_rep_file.close();
 
   return ;
 }

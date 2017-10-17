@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // process_fastq
 void process_fastq(std::string infile, std::string out_prefix, int buffer_size);
-RcppExport SEXP _qckit_process_fastq(SEXP infileSEXP, SEXP out_prefixSEXP, SEXP buffer_sizeSEXP) {
+RcppExport SEXP qckit_process_fastq(SEXP infileSEXP, SEXP out_prefixSEXP, SEXP buffer_sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type infile(infileSEXP);
@@ -16,14 +16,4 @@ BEGIN_RCPP
     process_fastq(infile, out_prefix, buffer_size);
     return R_NilValue;
 END_RCPP
-}
-
-static const R_CallMethodDef CallEntries[] = {
-    {"_qckit_process_fastq", (DL_FUNC) &_qckit_process_fastq, 3},
-    {NULL, NULL, 0}
-};
-
-RcppExport void R_init_qckit(DllInfo *dll) {
-    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
-    R_useDynamicSymbols(dll, FALSE);
 }
