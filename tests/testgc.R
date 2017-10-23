@@ -1,3 +1,3 @@
-tetgc("GC",{
-  expect_equal(GC_content(100,25917181)[1],43)
-})
+# tetgc("GC",{
+#   expect_equal(GC_content(100,25917181)[1],43)
+# })

@@ -17,3 +17,39 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// qual_score_per_read
+Rcpp::NumericVector qual_score_per_read(std::string infile);
+RcppExport SEXP qckit_qual_score_per_read(SEXP infileSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type infile(infileSEXP);
+    rcpp_result_gen = Rcpp::wrap(qual_score_per_read(infile));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gc_per_read
+Rcpp::NumericVector gc_per_read(std::string infile);
+RcppExport SEXP qckit_gc_per_read(SEXP infileSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type infile(infileSEXP);
+    rcpp_result_gen = Rcpp::wrap(gc_per_read(infile));
+    return rcpp_result_gen;
+END_RCPP
+}
+// calc_over_rep_seq
+std::map<std::string,int> calc_over_rep_seq(std::string infile, std::string out_prefix, int min_size, int buffer_size);
+RcppExport SEXP qckit_calc_over_rep_seq(SEXP infileSEXP, SEXP out_prefixSEXP, SEXP min_sizeSEXP, SEXP buffer_sizeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type infile(infileSEXP);
+    Rcpp::traits::input_parameter< std::string >::type out_prefix(out_prefixSEXP);
+    Rcpp::traits::input_parameter< int >::type min_size(min_sizeSEXP);
+    Rcpp::traits::input_parameter< int >::type buffer_size(buffer_sizeSEXP);
+    rcpp_result_gen = Rcpp::wrap(calc_over_rep_seq(infile, out_prefix, min_size, buffer_size));
+    return rcpp_result_gen;
+END_RCPP
+}

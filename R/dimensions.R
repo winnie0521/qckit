@@ -8,6 +8,7 @@
 #' @export
 #' @example
 #' dimensions("full.fq.gz",'reads')
+
 dimensions <- function(fseq,selection){
   ncolumn <- fseq@maxSeqLen
   nrow <- fseq@nReads
