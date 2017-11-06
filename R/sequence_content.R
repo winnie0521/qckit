@@ -2,10 +2,7 @@
 #'
 #' @param fseq an object that is the read result from seq.read function
 #' @param content an object of string type that specifies the content in question, "A","T","G","C","N"(either capital or lower case)
-#' @importMethodsFrom seqTools
 #' @return the per position
-#' @example
-#' sequence_content("full.fq.gz","G")
 
 sequence_content <- function(fseq,content){
 

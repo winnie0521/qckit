@@ -3,11 +3,6 @@
 #' @param  name the object that is the path to the gzipped FASTQ file
 #' @param nr the number of reads of the FASTQ file, acquired through previous functions
 #' @param nc the number of positions of the FASTQ file, acquired through previous functions
-#' @importMethodsFrom seqTools
-#' @importMethodsFrom ggplot2
-#' @importMethodsFrom reshape2
-#' @importMethodsFrom qckit::sequence_content
-#' @importMethodsFrom qckit::dimensions
 #' @return ggplot line plot of all nucleotide content inclding  A, T, G, C and N
 
 plotSeqContent<- function(fseq,nr,nc){

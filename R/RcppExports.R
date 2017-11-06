@@ -26,18 +26,18 @@ NULL
 NULL
 
 process_fastq <- function(infile, out_prefix, buffer_size) {
-    invisible(.Call('qckit_process_fastq', PACKAGE = 'qckit', infile, out_prefix, buffer_size))
+    invisible(.Call('_qckit_process_fastq', PACKAGE = 'qckit', infile, out_prefix, buffer_size))
 }
 
 qual_score_per_read <- function(infile) {
-    .Call('qckit_qual_score_per_read', PACKAGE = 'qckit', infile)
+    .Call('_qckit_qual_score_per_read', PACKAGE = 'qckit', infile)
 }
 
 gc_per_read <- function(infile) {
-    .Call('qckit_gc_per_read', PACKAGE = 'qckit', infile)
+    .Call('_qckit_gc_per_read', PACKAGE = 'qckit', infile)
 }
 
 calc_over_rep_seq <- function(infile, out_prefix, min_size = 5L, buffer_size = 1000000L) {
-    .Call('qckit_calc_over_rep_seq', PACKAGE = 'qckit', infile, out_prefix, min_size, buffer_size)
+    .Call('_qckit_calc_over_rep_seq', PACKAGE = 'qckit', infile, out_prefix, min_size, buffer_size)
 }
 

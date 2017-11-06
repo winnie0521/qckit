@@ -1,10 +1,8 @@
 #' Extract kmers and kmer counts from FASTQ file to a data frame
 #' @param name the object that is the path to  gzipped FASTQ file
 #' @param kcount the object that is the length of kmer that is in interest
-#' @importMethodsFrom seqTools
+#' @param writefile the boolean object that asks whether to write output as csv file
 #' @return data frame of kmer and corresponding kmer count of the length of choice
-#' @example
-#' kmer("full.fq.gz",7)
 
 
 kmer <- function(name,kcount,writefile=FALSE){

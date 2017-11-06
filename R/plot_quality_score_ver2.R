@@ -1,9 +1,6 @@
 #' Generate a boxplot of the per posistion quality score from basic statistics results
 #' @param basic_stat the object that is the data frame of the mean, median and quantiles of the FASTQ file from basic statistics function
-#' @importMethodsFrom ggplot2
 #' @return boxplot of per position quality score distribution
-#' @example
-#' plot_quality_score.2("full.fq.gz")
 
 
 plot_quality_score.2 <- function(basic_stat){

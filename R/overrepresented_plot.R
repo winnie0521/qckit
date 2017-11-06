@@ -1,6 +1,6 @@
 #' Plot the top 5 seqeunces
 #' @param over_rep_table the table that sorts the sequence content and corresponding counts in descending order
-#' @export plot of the top 5 overrepresented sequences
+#' @return plot of the top 5 overrepresented sequences
 
 
 overrep_plot <- function(over_rep_table){

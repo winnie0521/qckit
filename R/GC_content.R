@@ -2,10 +2,7 @@
 #' \code{GC_content} Use SQLite table to extract per position GC content and use ggplot for plotting
 #' @param nc the object that is the number of positions of the FASTQ file
 #' @param nr the object that is the number of reads of the FASTQ file
-#' @importMethodsFrom RSQLite
 #' @return plot of GC content
-#' @example
-#' GC_content(100)
 
 
 GC_content <- function(nc,nr){

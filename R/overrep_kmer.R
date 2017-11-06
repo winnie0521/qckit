@@ -5,9 +5,7 @@
 #' @param name the path to the data
 #' @param nc number of positions
 #' @param nr number of reads
-#' @importMethodsFrom seqTools
-#' @export the overrepresented kmer table, with the kmer and its position
-#'
+#' @return the index of reads that has overrepresented kmers
 #'
 overrep_kmer <- function(fseq,fseq_count,k,name,nc,nr){
 

@@ -2,8 +2,7 @@
 #' @param name the object that is the path to gzippped FASTQ file
 #' @return  table of sequnces sortted by count
 #' @return  density plot of sequence length with top 5 marked by rugs, saved as PDF file
-#' @importMethodsFrom dplyr
-#' @example overrepresented_sequence("full.fq.gz")
+
 
 
 overrepresented_sequence <- function(name){
