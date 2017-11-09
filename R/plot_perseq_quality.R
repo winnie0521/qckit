@@ -4,8 +4,7 @@
 #' use ggplot to plot the mean quality score per read
 #' @param nc the object that is the numbe of columns of the FASTQ file
 #' @return plot of mean quality score per read
-#' @example
-#' plot_perseq_quality("full.fq.gz")
+
 
 plot_perseq_quality <- function(nc){
 

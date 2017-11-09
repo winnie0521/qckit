@@ -54,20 +54,11 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP qckit_calc_over_rep_seq(SEXP, SEXP, SEXP, SEXP);
-RcppExport SEXP qckit_gc_per_read(SEXP);
-RcppExport SEXP qckit_process_fastq(SEXP, SEXP, SEXP);
-RcppExport SEXP qckit_qual_score_per_read(SEXP);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_qckit_process_fastq", (DL_FUNC) &_qckit_process_fastq, 3},
     {"_qckit_qual_score_per_read", (DL_FUNC) &_qckit_qual_score_per_read, 1},
     {"_qckit_gc_per_read", (DL_FUNC) &_qckit_gc_per_read, 1},
     {"_qckit_calc_over_rep_seq", (DL_FUNC) &_qckit_calc_over_rep_seq, 4},
-    {"qckit_calc_over_rep_seq",   (DL_FUNC) &qckit_calc_over_rep_seq,   4},
-    {"qckit_gc_per_read",         (DL_FUNC) &qckit_gc_per_read,         1},
-    {"qckit_process_fastq",       (DL_FUNC) &qckit_process_fastq,       3},
-    {"qckit_qual_score_per_read", (DL_FUNC) &qckit_qual_score_per_read, 1},
     {NULL, NULL, 0}
 };
 

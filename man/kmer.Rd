@@ -4,12 +4,14 @@
 \alias{kmer}
 \title{Extract kmers and kmer counts from FASTQ file to a data frame}
 \usage{
-kmer(name, kcount)
+kmer(name, kcount, writefile = FALSE)
 }
 \arguments{
 \item{name}{the object that is the path to  gzipped FASTQ file}
 
 \item{kcount}{the object that is the length of kmer that is in interest}
+
+\item{writefile}{the boolean object that asks whether to write output as csv file}
 }
 \value{
 data frame of kmer and corresponding kmer count of the length of choice

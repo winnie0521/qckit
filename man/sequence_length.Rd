@@ -4,10 +4,10 @@
 \alias{sequence_length}
 \title{extract the sequence length per read and plot corresponding bar plot}
 \usage{
-sequence_length(name)
+sequence_length(fseq)
 }
 \arguments{
-\item{name}{the object that is the path to the gzipped}
+\item{fseq}{the object that is the seqTools processed result}
 }
 \value{
 the plot of the sequence distribution among all reads

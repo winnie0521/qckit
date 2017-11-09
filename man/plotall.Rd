@@ -4,13 +4,18 @@
 \alias{plotall}
 \title{Plot all plots about the FASTQ file and save them in a pdf as comprehensive report}
 \usage{
-plotall(name)
+plotall(name, nr, nc, basic_stat, fseq)
 }
 \arguments{
 \item{name}{the object that is the path to the gzipped FASTQ file}
-}
-\value{
-pdf format report
+
+\item{nr}{the number of reads in the dataset}
+
+\item{nc}{the number of positions in the dataset}
+
+\item{basic_stat}{the dataframe of the basic stat informations}
+
+\item{fseq}{the object that is the seqTools processed data}
 }
 \description{
 Plot all plots about the FASTQ file and save them in a pdf as comprehensive report

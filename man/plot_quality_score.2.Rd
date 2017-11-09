@@ -4,10 +4,10 @@
 \alias{plot_quality_score.2}
 \title{Generate a boxplot of the per posistion quality score from basic statistics results}
 \usage{
-plot_quality_score.2(name)
+plot_quality_score.2(basic_stat)
 }
 \arguments{
-\item{name}{the object that is the path to the gzipped FASTQ file}
+\item{basic_stat}{the object that is the data frame of the mean, median and quantiles of the FASTQ file from basic statistics function}
 }
 \value{
 boxplot of per position quality score distribution
