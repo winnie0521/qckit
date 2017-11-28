@@ -18,7 +18,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // qual_score_per_read
-Rcpp::NumericVector qual_score_per_read(std::string infile);
+Rcpp::List qual_score_per_read(std::string infile);
 RcppExport SEXP _qckit_qual_score_per_read(SEXP infileSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

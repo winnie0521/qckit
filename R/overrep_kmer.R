@@ -1,16 +1,14 @@
 #' Generate overrepresented kmers from all kmer counts results
-#' @param fseq the read result from seqTools
-#' @param fseq_count kmer result generated from kmer function
+#' @param path the path to the gz file
 #' @param k the length of the sequence looking for
-#' @param name the path to the data
 #' @param nc number of positions
 #' @param nr number of reads
 #' @return the index of reads that has overrepresented kmers
 #'
-overrep_kmer <- function(fseq,fseq_count,k,name,nc,nr){
-
-  #fseq_count <- kmer("data/full.fq.gz",7)
-  colnames(fseq_count) = seq(1,nc-k+1,1)
+overrep_kmer <- function(path,k,nc,nr){
+  fseq <- seqTools::fastqq(path)
+  fseq_count <- data.frame(seqTools::fastqKmerLocs(path,k)[[1]])
+  colnames(fseq_count) <- seq(1,nc-k+1,1)
 
   # find marginal probabilities of ATGC
 
@@ -69,8 +67,8 @@ overrep_kmer <- function(fseq,fseq_count,k,name,nc,nr){
   indexes <- data.frame(matrix(ncol=3,nrow = length(index)))
   indexes$originalindex <- index
   indexes$obsexp <- value
-  indexes$positionindex <- index%% 94
-  indexes$kmerindex <- rownames(fseq_count_copy)[index%/% 94+1*(indexes$positionindex!=0)]
+  indexes$positionindex <- index%%(nc-k+1)
+  indexes$kmerindex <- rownames(fseq_count_copy)[index%/%(nc-k+1)+1*(indexes$positionindex!=0)]
   indexes = subset(indexes,select = -c(X1,X2,X3))
   write.csv(file="OverrepresentedKmers.csv",indexes)
   return(indexes)

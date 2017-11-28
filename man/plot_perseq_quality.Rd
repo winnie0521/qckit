@@ -2,22 +2,18 @@
 % Please edit documentation in R/plot_perseq_quality.R
 \name{plot_perseq_quality}
 \alias{plot_perseq_quality}
-\title{plot the mean quality score per read
-\code{plot_perseq_quality}
-use SQLite command to calculate row means from qualityscore table
-use ggplot to plot the mean quality score per read}
+\title{plot the mean quality score per read in histograms
+\code{plot_perseq_quality}}
 \usage{
-plot_perseq_quality(nc)
+plot_perseq_quality(infile)
 }
 \arguments{
-\item{nc}{the object that is the numbe of columns of the FASTQ file}
+\item{infile}{the object that is the path to the file that}
 }
 \value{
 plot of mean quality score per read
 }
 \description{
-plot the mean quality score per read
+plot the mean quality score per read in histograms
 \code{plot_perseq_quality}
-use SQLite command to calculate row means from qualityscore table
-use ggplot to plot the mean quality score per read
 }

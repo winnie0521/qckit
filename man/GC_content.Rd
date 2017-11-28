@@ -3,23 +3,20 @@
 \name{GC_content}
 \alias{GC_content}
 \alias{GC_content}
-\title{Extract GC content separately and calculate GC content percentage for each sequence read
-\code{GC_content} Use SQLite table to extract per position GC content and use ggplot for plotting}
+\title{Extract GC content separately and calculate GC content percentage for each sequence read}
 \usage{
 GC_content(nc, gc_df, writefile = FALSE)
 
 GC_content(nc, gc_df, writefile = FALSE)
 }
 \arguments{
-\item{nc}{the object that is the number of positions of the FASTQ file}
+\item{nc}{the object that is the number of positions of the FASTQ files}
 
 \item{gc_df}{the object that is the GC content vectors generated from GC content function}
 
 \item{writefile}{the object indicating intent to save the plot as pdf file, set default as FALSE}
 
-\item{nr}{the object that is the number of reads of the FASTQ file}
-
-\item{nc}{the object that is the number of positions of the FASTQ files}
+\item{infile}{the object that is the path to the FASTQ file}
 }
 \value{
 plot of GC content
@@ -28,7 +25,6 @@ a ggplot of the GC content acorss all positions
 }
 \description{
 Extract GC content separately and calculate GC content percentage for each sequence read
-\code{GC_content} Use SQLite table to extract per position GC content and use ggplot for plotting
 
 Generate GC content plot from the GC content
 }

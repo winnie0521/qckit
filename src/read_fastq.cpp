@@ -4,40 +4,20 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <cstdint>
 #include "gzstream.h"
 #include "zlib.h"
 
 using namespace Rcpp;
 
-// This is a simple example of exporting a C++ function to R. You can
-// source this function into an R session using the Rcpp::sourceCpp
-// function (or via the Source button on the editor toolbar). Learn
-// more about Rcpp at:
-//
-//   http://www.rcpp.org/
-//   http://adv-r.had.co.nz/Rcpp.html
-//   http://gallery.rcpp.org/
-//
-
-
-// You can include R code blocks in C++ files processed with sourceCpp
-// (useful for testing and development). The R code will be automatically
-// run after the compilation.
-//
-
-/*** R
-timesTwo(42)
-*/
-
-
-
 //' calculate Over Rep seqs
 //'
 //' Description
-//' @param m
-//'
-//'
-
+//' @param infile  A string giving the path for the fastqfile
+//' @param out_prefix A string giving the prefix to be used for outputs
+//' @param buffer_size An int for the number of lines to keep in memory
+//' @export
 // [[Rcpp::export]]
  void process_fastq (std::string infile, std::string out_prefix, int buffer_size)
   {
@@ -239,18 +219,66 @@ timesTwo(42)
 }
 
 
-//' calculate Over Rep seqs
+//' calculate summary of quality scores over position
 //'
 //' Description
-//' @param m
-//'
-//'
-//'
+//' @param inmat A matrix of score vectors per position
 
-// [[Rcpp::export]]
-Rcpp::NumericVector qual_score_per_read (std::string infile)
+std::vector<std::vector<int> > qual_score_per_position (const std::map<int,std::vector<uint8_t> > &inmat)
 {
-  std::map<char, int> ascii_map;
+  std::vector<std::vector<int> > qual_score_mat_results;
+  std::vector<int> q_01,q_25, q_50,q_75, q_99;
+
+  std::map<int,std::vector<uint8_t> >::const_iterator mat_it = inmat.begin();
+
+  for(mat_it = inmat.begin(); mat_it !=inmat.end(); mat_it++)
+  {
+    std::vector<uint8_t> quantile = mat_it->second;
+
+    int Q1 = static_cast<int> (quantile.size()*0.01);
+    int Q25 = (quantile.size()+1) / 4;
+    int Q50= (quantile.size()+1) / 2;
+    int Q75 = Q25 + Q50;
+    int Q99 = static_cast<int> (quantile.size()*0.99) ;
+
+    std::nth_element(quantile.begin(),quantile.begin() + Q1, quantile.end());
+    q_01.push_back(static_cast<int>(quantile[Q1]));
+    quantile.clear();
+
+    std::nth_element(quantile.begin(),quantile.begin() + Q25, quantile.end());
+    q_25.push_back(static_cast<int>(quantile[Q25]));
+    quantile.clear();
+
+    quantile = mat_it->second;
+    std::nth_element(quantile.begin(), quantile.begin() + Q50, quantile.end());
+    q_50.push_back(static_cast<int>(quantile[Q50]));
+    quantile.clear();
+
+    quantile = mat_it->second;
+    std::nth_element(quantile.begin(), quantile.begin() + Q75, quantile.end());
+    q_75.push_back(static_cast<int>(quantile[Q75]));
+
+    std::nth_element(quantile.begin(),quantile.begin() + Q99, quantile.end());
+    q_99.push_back(static_cast<int>(quantile[Q99]));
+    quantile.clear();
+  }
+  qual_score_mat_results.push_back(q_01);
+  qual_score_mat_results.push_back(q_25);
+  qual_score_mat_results.push_back(q_50);
+  qual_score_mat_results.push_back(q_75);
+  qual_score_mat_results.push_back(q_99);
+  return qual_score_mat_results ;
+}
+
+//' calculate mean quality per read
+//'
+//' Description
+//' @param infile A string giving the path for the fastqfile
+//' @export
+// [[Rcpp::export]]
+Rcpp::List qual_score_per_read (std::string infile)
+{
+  std::map<char, uint8_t> ascii_map;
   ascii_map['!'] = 0;
   ascii_map['"'] = 1;
   ascii_map['#'] = 2;
@@ -347,15 +375,17 @@ Rcpp::NumericVector qual_score_per_read (std::string infile)
   ascii_map['~'] = 93;
 
   std::vector<double> quality_score_per_read;
-  std::vector<int> qual_by_column;
-  std::vector<int>::iterator qual_by_col_it;
+  std::vector<uint8_t> qual_by_column;
+  std::vector<uint8_t>::iterator qual_by_col_it;
+
+  std::map<int,std::vector<uint8_t> > qual_score_matrix;
+
   gz::igzstream in(infile.c_str());
   std::string line;
   int count = 1;
   double quality_score_mean = 0;
   while (std::getline(in, line))
     {
-
 
     if (count == 4)
     {
@@ -365,6 +395,15 @@ Rcpp::NumericVector qual_score_per_read (std::string infile)
       for (std::string::iterator it = line.begin(); it != line.end(); ++it)
       {
           qual_by_column.push_back(ascii_map.find(*it)->second);
+          if(pos_counter <= qual_score_matrix.size())
+          {
+          qual_score_matrix[pos_counter].push_back(ascii_map.find(*it)->second);
+          }
+          else
+          {
+            qual_score_matrix.insert(std::pair<int,uint8_t>(pos_counter,ascii_map.find(*it)->second ));
+          }
+          pos_counter++;
       }
       quality_score_mean = static_cast<double>(std::accumulate(qual_by_column.begin(), qual_by_column.end(),
                                            0.0))/static_cast<double>(qual_by_column.size());
@@ -376,19 +415,36 @@ Rcpp::NumericVector qual_score_per_read (std::string infile)
       count++;
     }
   }
+  std::vector<std::vector<int> > qual_score_summary_by_position;
+  qual_score_summary_by_position = qual_score_per_position(qual_score_matrix);
+
+  std::vector<double> mu_per_position;
+  std::map<int,std::vector<uint8_t> >::iterator mat_it = qual_score_matrix.begin();
+
+  for(mat_it = qual_score_matrix.begin(); mat_it != qual_score_matrix.end(); mat_it++)
+  {
+    std::vector<uint8_t> quantile = mat_it->second;
+
+    mu_per_position.push_back(static_cast<double>(std::accumulate(quantile.begin(),
+                                                                  quantile.end(),0.0))/static_cast<double>(quantile.size()));
+  }
   //Cleanup
   in.close();
-  return wrap(quality_score_per_read) ;
-}
+  return Rcpp::List::create(Rcpp::Named("mu_per_read") = quality_score_per_read,
+                            Rcpp::Named("mu_per_position") = mu_per_position,
+                            Rcpp::Named("q01_per_position") = qual_score_summary_by_position[0],
+                            Rcpp::Named("q25_per_position") = qual_score_summary_by_position[1],
+                            Rcpp::Named("q50_per_position") = qual_score_summary_by_position[2],
+                            Rcpp::Named("q75_per_position") = qual_score_summary_by_position[3],
+                            Rcpp::Named("q99_per_position") = qual_score_summary_by_position[4]);
+  }
 
 
-
-//' calculate Over Rep seqs
+//' calculate GC percent per read
 //'
 //' Description
-//' @param m
-//'
-
+//' @param infile A string giving the path for the fastqfile
+//' @export
 // [[Rcpp::export]]
 Rcpp::NumericVector gc_per_read (std::string infile)
 {
@@ -441,16 +497,17 @@ Rcpp::NumericVector gc_per_read (std::string infile)
 }
 
 
-// calculate Over Rep seqs
-//
-// Description
-// @param m
-//
-//
-
+//' calculate Over Rep seqs
+//'
+//' Description
+//' @param infile A string giving the path for the fastqfile
+//' @param out_prefix A string giving the prefix to be used for outputs
+//' @param min_size An int for thhresholding over representation
+//' @param buffer_size An int for the number of lines to keep in memory
+//' @export
 // [[Rcpp::export]]
 std::map<std::string,int> calc_over_rep_seq (std::string infile, std::string out_prefix,
-                                             int min_size=5, int buffer_size = 1000000)
+                                             int min_size=5, int buffer_size = 10000000000)
 {
   std::map<std::string, int> over_rep_map;
   std::map<std::string,int>::iterator it;

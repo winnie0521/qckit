@@ -4,16 +4,12 @@
 \alias{overrep_kmer}
 \title{Generate overrepresented kmers from all kmer counts results}
 \usage{
-overrep_kmer(fseq, fseq_count, k, name, nc, nr)
+overrep_kmer(path, k, nc, nr)
 }
 \arguments{
-\item{fseq}{the read result from seqTools}
-
-\item{fseq_count}{kmer result generated from kmer function}
+\item{path}{the path to the gz file}
 
 \item{k}{the length of the sequence looking for}
-
-\item{name}{the path to the data}
 
 \item{nc}{number of positions}
 

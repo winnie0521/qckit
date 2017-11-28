@@ -1,5 +1,4 @@
 #' Extract nucleoctide sequence content per position from fastq file
-#'
 #' @param fseq an object that is the read result from seq.read function
 #' @param content an object of string type that specifies the content in question, "A","T","G","C","N"(either capital or lower case)
 #' @return the per position
