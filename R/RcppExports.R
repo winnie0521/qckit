@@ -44,7 +44,7 @@ gc_per_read <- function(infile) {
 #' @param min_size An int for thhresholding over representation
 #' @param buffer_size An int for the number of lines to keep in memory
 #' @export
-calc_over_rep_seq <- function(infile, out_prefix, min_size = 5L, buffer_size = 10000000000L) {
+calc_over_rep_seq <- function(infile, out_prefix, min_size = 5L, buffer_size = 1000000L) {
     .Call('_qckit_calc_over_rep_seq', PACKAGE = 'qckit', infile, out_prefix, min_size, buffer_size)
 }
 

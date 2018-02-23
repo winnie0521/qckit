@@ -507,7 +507,7 @@ Rcpp::NumericVector gc_per_read (std::string infile)
 //' @export
 // [[Rcpp::export]]
 std::map<std::string,int> calc_over_rep_seq (std::string infile, std::string out_prefix,
-                                             int min_size=5, int buffer_size = 10000000000)
+                                             int min_size=5, int buffer_size = 1000000)
 {
   std::map<std::string, int> over_rep_map;
   std::map<std::string,int>::iterator it;

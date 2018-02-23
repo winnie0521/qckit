@@ -4,10 +4,12 @@
 \alias{overrep_plot}
 \title{Plot the top 5 seqeunces}
 \usage{
-overrep_plot(over_rep_table)
+overrep_plot(overrep_order, prefix)
 }
 \arguments{
-\item{over_rep_table}{the table that sorts the sequence content and corresponding counts in descending order}
+\item{overrep_order}{the table that sorts the sequence content and corresponding counts in descending order}
+
+\item{prefix}{the prefix tot he file saved}
 }
 \value{
 plot of the top 5 overrepresented sequences

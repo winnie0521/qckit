@@ -7,7 +7,7 @@ GC_content <- function(infile){
 
   gc_result <- gc_per_read(infile)
 
-  gc_df <- as.data.frame(gc_result)
+  gc_df <- as.data.frame(gc_result*100)
   colnames(gc_df) = c("meanGC")
   return(gc_df)
 }

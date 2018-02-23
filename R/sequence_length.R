@@ -3,7 +3,7 @@
 #' @return the plot of the sequence distribution among all reads
 
 
-sequence_length <- function(fseq){
+plot_sequence_length <- function(fseq){
 
   len_table <- as.data.frame(seqTools::seqLenCount(fseq))
   colnames(len_table) = c("count")
