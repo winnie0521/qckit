@@ -3,14 +3,12 @@
 #' @param  name the object that is the path to the gzipped FASTQ file
 #' @param nr the number of reads of the FASTQ file, acquired through previous functions
 #' @param nc the number of positions of the FASTQ file, acquired through previous functions
-#' @importMethodsFrom seqTools
-#' @importMethodsFrom ggplot2
-#' @importMethodsFrom reshape2
-#' @importMethodsFrom qckit::sequence_content
-#' @importMethodsFrom qckit::dimensions
+#' @param writefile the boolean object to write the plot as PDF file, default is FALSE
+#' @param prefix the prefix to add to the file name, default is empty
+#'
 #' @return ggplot line plot of all nucleotide content inclding  A, T, G, C and N
 
-plotSeqContent<- function(fseq,nr,nc){
+plotSeqContent<- function(fseq,nr,nc,writefile=FALSE,prefix=''){
 
   G_content<- sequence_content(fseq,"G")
   C_content<- sequence_content(fseq,"C")
@@ -24,6 +22,6 @@ plotSeqContent<- function(fseq,nr,nc){
   p1 <- ggplot2::ggplot(dfm,ggplot2::aes(x= as.numeric(position),y=value,colour = variable))+ggplot2::geom_line()
   p2 <- p1 + ggplot2::labs(x = "Position", y= "Percentage of content", title = "Per base sequence content percentage")
   p_content <- p2 + ggplot2::guides(fill=ggplot2::guide_legend(title="Sequence Content"))
-
+  if (writefile==TRUE){ggplot2::ggsave(file=paste0(prefix,"Seqeunce_content.pdf"),p_content)}
   return(p_content)
 }

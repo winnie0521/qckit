@@ -5,9 +5,13 @@
 \title{Plot the per position nucleotide content
 \code{plotSeqContent}}
 \usage{
-plotSeqContent(name)
+plotSeqContent(fseq, nr, nc)
 }
 \arguments{
+\item{nr}{the number of reads of the FASTQ file, acquired through previous functions}
+
+\item{nc}{the number of positions of the FASTQ file, acquired through previous functions}
+
 \item{name}{the object that is the path to the gzipped FASTQ file}
 }
 \value{

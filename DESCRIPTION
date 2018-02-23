@@ -8,12 +8,15 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 Suggests: testthat
 RoxygenNote: 6.0.1.9000
-Import: 
-magrittr,
-ggplot2,
-dplyr,
-seqTools,
-RSQLite
+LinkingTo: Rcpp
+Imports: 
+  magrittr,
+  ggplot2,
+  dplyr,
+  seqTools,
+  RSQLite,
+  zlibbioc, 
+  Rcpp

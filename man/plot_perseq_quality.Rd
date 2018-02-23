@@ -2,18 +2,18 @@
 % Please edit documentation in R/plot_perseq_quality.R
 \name{plot_perseq_quality}
 \alias{plot_perseq_quality}
-\title{plot the mean quality score per read
-\code{plot_perseq_quality} use ggplot to plot the mean quality score per read}
+\title{plot the mean quality score per read in histograms
+\code{plot_perseq_quality}}
 \usage{
-plot_perseq_quality(scorecycle)
+plot_perseq_quality(infile)
 }
 \arguments{
-\item{scorecycle}{the object that is the matrix of quality score read from the read score function}
+\item{infile}{the object that is the path to the file that}
 }
 \value{
 plot of mean quality score per read
 }
 \description{
-plot the mean quality score per read
-\code{plot_perseq_quality} use ggplot to plot the mean quality score per read
+plot the mean quality score per read in histograms
+\code{plot_perseq_quality}
 }

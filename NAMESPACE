@@ -1,1 +1,6 @@
+useDynLib(qckit)
+import(zlibbioc)
+
 exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)
+
