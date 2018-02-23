@@ -2,7 +2,6 @@
 #' @param overrep_order the table that sorts the sequence content and corresponding counts in descending order
 #' @param prefix the prefix tot he file saved
 #'
-#'
 #' @return plot of the top 5 overrepresented sequences
 
 

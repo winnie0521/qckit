@@ -2,7 +2,7 @@
 #' @param nc the object that is the number of positions of the FASTQ files
 #' @param gc_df the object that is the GC content vectors generated from GC content function
 #' @param writefile the object indicating intent to save the plot as pdf file, set default as FALSE
-#' @param prefix the prefix for the output file of the plot
+#' @param prefix the prefix for the output file of the plot， default is empty
 #' @return a ggplot of the GC content acorss all positions
 
 GC_content_plot <- function(nc,gc_df, writefile=FALSE,prefix = ''){
