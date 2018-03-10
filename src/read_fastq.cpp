@@ -13,7 +13,7 @@ using namespace Rcpp;
 
 //' calculate Over Rep seqs
 //'
-//' Description
+//'
 //' @param infile  A string giving the path for the fastqfile
 //' @param out_prefix A string giving the prefix to be used for outputs
 //' @param buffer_size An int for the number of lines to keep in memory
@@ -272,7 +272,7 @@ std::vector<std::vector<int> > qual_score_per_position (const std::map<int,std::
 
 //' calculate mean quality per read
 //'
-//' Description
+//' Calculate the mean quality score per read of the FASTQ gzipped file
 //' @param infile A string giving the path for the fastqfile
 //' @export
 // [[Rcpp::export]]
@@ -442,7 +442,7 @@ Rcpp::List qual_score_per_read (std::string infile)
 
 //' calculate GC percent per read
 //'
-//' Description
+//' Calculate GC nucleotide sequence content per read of the FASTQ gzipped file
 //' @param infile A string giving the path for the fastqfile
 //' @export
 // [[Rcpp::export]]
@@ -499,7 +499,7 @@ Rcpp::NumericVector gc_per_read (std::string infile)
 
 //' calculate Over Rep seqs
 //'
-//' Description
+//' Calculate sequece counts for each unique sequence and create a table with unique sequences and corresponding counts
 //' @param infile A string giving the path for the fastqfile
 //' @param out_prefix A string giving the prefix to be used for outputs
 //' @param min_size An int for thhresholding over representation

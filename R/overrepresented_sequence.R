@@ -7,7 +7,7 @@
 
 
 
-overrepresented_sequence <- function(infile, prefix,nr){
+overrepresented_sequence <- function(infile,nr,prefix){
 
   over_rep <- calc_over_rep_seq(infile,prefix)
   over_rep_table <- overrep_seq[overrep_seq>0.001*nr]

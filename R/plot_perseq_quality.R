@@ -2,12 +2,13 @@
 #' \code{plot_perseq_quality}
 #' @param infile the object that is the path to the file that
 #' @param writefile the object indicating intent to save the plot as pdf file, set default as FALSE
-#' @param prefix the prefix for the output file of the plot， default is empty
+#' @param prefix the prefix for the output file of the plot
 #'
 #' @return plot of mean quality score per read
 
 
-plot_perseq_quality <- function(infile,writefile=FALSE,prefix = ''){
+
+plot_perseq_quality <- function(infile,writefile=FALSE,prefix){
 
   score_sequence_mean <- data.frame(qual_score_per_read(infile))
   colnames(score_sequence_mean) <- c("sequencemean")

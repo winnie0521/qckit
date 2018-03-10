@@ -1,12 +1,13 @@
 #' extract the sequence length per read and plot corresponding bar plot
 #' @param  fseq the object that is the seqTools processed result
-#' @param writefile the boolean object to write the plot as PDF file, default is FALSE
-#' @param prefix the prefix to add to the file name, default is empty
+#' @param  writefile the boolean object to write the plot as PDF file, default is FALSE
+#' @param  prefix the prefix to add to the file name
 #'
 #' @return the plot of the sequence distribution among all reads
+#' @author Wenyue Xing, \email{wenyue_xing@@brown.edu}
 
 
-plot_sequence_length <- function(fseq,writefile=FALSE,prefix=''){
+plot_sequence_length <- function(fseq,writefile=FALSE,prefix){
 
   len_table <- as.data.frame(seqTools::seqLenCount(fseq))
   colnames(len_table) = c("count")

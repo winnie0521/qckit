@@ -68,10 +68,10 @@ overrep_kmer <- function(path,k,nc,nr){
 
 
 
-  index_overt <- data.table(index_over)
+  index_overt <- data.table::data.table(index_over)
   index <- index_overt %>% group_by(row) %>% top_n(1,obsexp_ratio)
 
-  indexes <- data.table(index)[order(-obsexp_ratio,row)]
+  indexes <- data.table::data.table(index)[order(-obsexp_ratio,row)]
   indexes$kmer <- rownames(fseq_count_log)[indexes$row]
   write.csv(file="OverrepresentedKmers.csv",indexes)
   return(indexes)

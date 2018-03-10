@@ -10,5 +10,5 @@ qual_score_per_read(infile)
 \item{infile}{A string giving the path for the fastqfile}
 }
 \description{
-Description
+Calculate the mean quality score per read of the FASTQ gzipped file
 }

@@ -4,7 +4,7 @@
 \alias{GC_content_plot}
 \title{Generate GC content plot from the GC content}
 \usage{
-GC_content_plot(nc, gc_df, writefile = FALSE, prefix = "")
+GC_content_plot(nc, gc_df, writefile = FALSE, prefix)
 }
 \arguments{
 \item{nc}{the object that is the number of positions of the FASTQ files}

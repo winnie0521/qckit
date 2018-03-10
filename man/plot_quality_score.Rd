@@ -4,9 +4,13 @@
 \alias{plot_quality_score}
 \title{Generate a boxplot of the per posistion quality score from basic statistics results}
 \usage{
-plot_quality_score(basic_statistics)
+plot_quality_score(basic_statistics, writefile = FALSE, prefix)
 }
 \arguments{
+\item{writefile}{the object indicating intent to save the plot as pdf file, set default as FALSE}
+
+\item{prefix}{the prefix for the output file of the plot}
+
 \item{basic_stat}{the object that is the dataframe of the mean, median and quantiles of the FASTQ file from basic statistics function}
 }
 \value{

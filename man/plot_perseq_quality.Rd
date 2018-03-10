@@ -5,10 +5,14 @@
 \title{plot the mean quality score per read in histograms
 \code{plot_perseq_quality}}
 \usage{
-plot_perseq_quality(infile)
+plot_perseq_quality(infile, writefile = FALSE, prefix)
 }
 \arguments{
 \item{infile}{the object that is the path to the file that}
+
+\item{writefile}{the object indicating intent to save the plot as pdf file, set default as FALSE}
+
+\item{prefix}{the prefix for the output file of the plot}
 }
 \value{
 plot of mean quality score per read

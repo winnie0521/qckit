@@ -4,14 +4,21 @@
 \alias{plot_sequence_length}
 \title{extract the sequence length per read and plot corresponding bar plot}
 \usage{
-plot_sequence_length(fseq)
+plot_sequence_length(fseq, writefile = FALSE, prefix)
 }
 \arguments{
 \item{fseq}{the object that is the seqTools processed result}
+
+\item{writefile}{the boolean object to write the plot as PDF file, default is FALSE}
+
+\item{prefix}{the prefix to add to the file name}
 }
 \value{
 the plot of the sequence distribution among all reads
 }
 \description{
 extract the sequence length per read and plot corresponding bar plot
+}
+\author{
+Wenyue Xing, \email{wenyue_xing@brown.edu}
 }

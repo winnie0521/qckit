@@ -9,7 +9,7 @@ overrep_plot(overrep_order, prefix)
 \arguments{
 \item{overrep_order}{the table that sorts the sequence content and corresponding counts in descending order}
 
-\item{prefix}{the prefix tot he file saved}
+\item{prefix}{the prefix to the file saved}
 }
 \value{
 plot of the top 5 overrepresented sequences

@@ -1,11 +1,10 @@
 Package: qckit
 Type: Package
-Title: What the Package Does (Title Case)
+Title: FASTQ quality control
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Wenyue Xing
+Maintainer: The package maintainer <wenyue_xing@brown.edu>
+Description: The package provides comprehensive metrics of quality control and option of access to data files. 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: false
@@ -17,6 +16,12 @@ Imports:
   ggplot2,
   dplyr,
   seqTools,
-  RSQLite,
   zlibbioc, 
+  testthat,
+  data.table,
+  reshape2,
+  grDevices,
+  graphics,
+  stats,
+  utils,
   Rcpp

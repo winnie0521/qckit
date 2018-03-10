@@ -4,14 +4,14 @@
 \alias{overrepresented_sequence}
 \title{Sort all sequences per read by count along with a density plot of all counts with top 5 repreated sequences marked}
 \usage{
-overrepresented_sequence(infile, prefix, nr)
+overrepresented_sequence(infile, nr, prefix)
 }
 \arguments{
 \item{infile}{the object that is the path to gzippped FASTQ file}
 
-\item{prefix}{the prefix to name the output file}
-
 \item{nr}{the number of reads of the FASTQ file}
+
+\item{prefix}{the prefix to name the output file}
 }
 \value{
 table of sequnces sortted by count

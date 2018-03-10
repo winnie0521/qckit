@@ -15,3 +15,6 @@ boxplot of per position quality score distribution
 \description{
 Generate the data frame that includes percentiles of quality score per position
 }
+\author{
+Wenyue Xing, \email{wenyue_xing@brown.edu}
+}

@@ -9,7 +9,7 @@ NULL
 
 #' calculate Over Rep seqs
 #'
-#' Description
+#'
 #' @param infile  A string giving the path for the fastqfile
 #' @param out_prefix A string giving the prefix to be used for outputs
 #' @param buffer_size An int for the number of lines to keep in memory
@@ -20,7 +20,7 @@ process_fastq <- function(infile, out_prefix, buffer_size) {
 
 #' calculate mean quality per read
 #'
-#' Description
+#' Calculate the mean quality score per read of the FASTQ gzipped file
 #' @param infile A string giving the path for the fastqfile
 #' @export
 qual_score_per_read <- function(infile) {
@@ -29,7 +29,7 @@ qual_score_per_read <- function(infile) {
 
 #' calculate GC percent per read
 #'
-#' Description
+#' Calculate GC nucleotide sequence content per read of the FASTQ gzipped file
 #' @param infile A string giving the path for the fastqfile
 #' @export
 gc_per_read <- function(infile) {
@@ -38,7 +38,7 @@ gc_per_read <- function(infile) {
 
 #' calculate Over Rep seqs
 #'
-#' Description
+#' Calculate sequece counts for each unique sequence and create a table with unique sequences and corresponding counts
 #' @param infile A string giving the path for the fastqfile
 #' @param out_prefix A string giving the prefix to be used for outputs
 #' @param min_size An int for thhresholding over representation

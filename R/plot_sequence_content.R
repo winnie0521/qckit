@@ -4,11 +4,11 @@
 #' @param nr the number of reads of the FASTQ file, acquired through previous functions
 #' @param nc the number of positions of the FASTQ file, acquired through previous functions
 #' @param writefile the boolean object to write the plot as PDF file, default is FALSE
-#' @param prefix the prefix to add to the file name, default is empty
+#' @param prefix the prefix to add to the file name
 #'
 #' @return ggplot line plot of all nucleotide content inclding  A, T, G, C and N
 
-plotSeqContent<- function(fseq,nr,nc,writefile=FALSE,prefix=''){
+plotSeqContent<- function(fseq,nr,nc,writefile=FALSE,prefix){
 
   G_content<- sequence_content(fseq,"G")
   C_content<- sequence_content(fseq,"C")

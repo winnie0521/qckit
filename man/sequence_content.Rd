@@ -17,3 +17,6 @@ the per position
 \description{
 Extract nucleoctide sequence content per position from fastq file
 }
+\author{
+Wenyue Xing, \email{wenyue_xing@brown.edu}
+}

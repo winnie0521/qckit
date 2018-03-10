@@ -10,5 +10,5 @@ gc_per_read(infile)
 \item{infile}{A string giving the path for the fastqfile}
 }
 \description{
-Description
+Calculate GC nucleotide sequence content per read of the FASTQ gzipped file
 }

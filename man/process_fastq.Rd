@@ -14,5 +14,5 @@ process_fastq(infile, out_prefix, buffer_size)
 \item{buffer_size}{An int for the number of lines to keep in memory}
 }
 \description{
-Description
+calculate Over Rep seqs
 }
