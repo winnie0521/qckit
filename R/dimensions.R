@@ -4,6 +4,9 @@
 #' @param fseq an object that is the read result of the seq.read function
 #' @param selection "reads' for number of reads/rows, 'positions' for number of positions/columns
 #' @return a numeric value of the number of reads or the number of positions
+#' @example
+#' fseq <- seqTools::fastqq(system.file("extdata", "10^5_reads_test.fq.gz", package = "qckit"))
+#' dimensions(fseq,"positions)
 
 
 dimensions <- function(fseq,selection){

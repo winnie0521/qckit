@@ -8,6 +8,8 @@
 plotSeqContent(fseq, nr, nc, writefile = FALSE, prefix)
 }
 \arguments{
+\item{fseq}{the object that is the processed intermediate product of seqTools fastqq}
+
 \item{nr}{the number of reads of the FASTQ file, acquired through previous functions}
 
 \item{nc}{the number of positions of the FASTQ file, acquired through previous functions}
@@ -15,8 +17,6 @@ plotSeqContent(fseq, nr, nc, writefile = FALSE, prefix)
 \item{writefile}{the boolean object to write the plot as PDF file, default is FALSE}
 
 \item{prefix}{the prefix to add to the file name}
-
-\item{name}{the object that is the path to the gzipped FASTQ file}
 }
 \value{
 ggplot line plot of all nucleotide content inclding  A, T, G, C and N

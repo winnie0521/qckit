@@ -10,7 +10,7 @@
 overrepresented_sequence <- function(infile,nr,prefix){
 
   over_rep <- calc_over_rep_seq(infile,prefix)
-  over_rep_table <- overrep_seq[overrep_seq>0.001*nr]
+  over_rep_table <- over_rep[over_rep>0.001*nr]
   overrep_order <- sort(over_rep_table,decreasing=TRUE)
   write.csv(overrep_order,file = paste0(prefix,"overrepresented_sequence.csv"))
   return(overrep_order)
