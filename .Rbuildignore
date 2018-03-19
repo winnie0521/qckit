@@ -1,3 +1,13 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
+  .DS_Store
+  .gitignore
+  R/.DS_Store
+  R/.Rapp.history
+  man/.DS_Store
+  src/.DS_Store
+  tests/.DS_Store
+  tests/.Rapp.history
+  .Rproj.user
+  .git

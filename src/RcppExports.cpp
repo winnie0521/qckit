@@ -5,6 +5,17 @@
 
 using namespace Rcpp;
 
+// read_adapters
+DataFrame read_adapters(std::string adapters);
+RcppExport SEXP _qckit_read_adapters(SEXP adaptersSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type adapters(adaptersSEXP);
+    rcpp_result_gen = Rcpp::wrap(read_adapters(adapters));
+    return rcpp_result_gen;
+END_RCPP
+}
 // process_fastq
 void process_fastq(std::string infile, std::string out_prefix, int buffer_size);
 RcppExport SEXP _qckit_process_fastq(SEXP infileSEXP, SEXP out_prefixSEXP, SEXP buffer_sizeSEXP) {
@@ -55,6 +66,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_qckit_read_adapters", (DL_FUNC) &_qckit_read_adapters, 1},
     {"_qckit_process_fastq", (DL_FUNC) &_qckit_process_fastq, 3},
     {"_qckit_qual_score_per_read", (DL_FUNC) &_qckit_qual_score_per_read, 1},
     {"_qckit_gc_per_read", (DL_FUNC) &_qckit_gc_per_read, 1},
