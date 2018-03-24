@@ -3,7 +3,7 @@
 #' @param writefile the object indicating intent to save the plot as pdf file, set default as FALSE
 #' @param prefix the prefix for the output file of the plot
 #'
-#'
+#' @export
 #'
 #' @return boxplot of per position quality score distribution
 

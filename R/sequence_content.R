@@ -3,6 +3,7 @@
 #' @param content an object of string type that specifies the content in question, "A","T","G","C","N"(either capital or lower case)
 #' @return the per position
 #' @author Wenyue Xing, \email{wenyue_xing@@brown.edu}
+#' @export
 
 sequence_content <- function(fseq,content){
 

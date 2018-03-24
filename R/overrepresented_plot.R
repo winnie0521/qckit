@@ -3,6 +3,7 @@
 #' @param prefix the prefix to the file saved
 #'
 #' @return plot of the top 5 overrepresented sequences
+#' @export
 
 
 overrep_plot <- function(overrep_order,prefix){

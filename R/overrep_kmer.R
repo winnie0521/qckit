@@ -5,6 +5,7 @@
 #' @param nc number of positions
 #' @param nr number of reads
 #' @return the index of reads that has overrepresented kmers
+#' @export
 
 overrep_kmer <- function(path,k,nc,nr){
   fseq <- seqTools::fastqq(path)

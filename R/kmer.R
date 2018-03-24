@@ -3,7 +3,7 @@
 #' @param k the length of kmer
 #'
 #' @return  Kmers counts per sequence
-#'
+#' @export
 
 
 

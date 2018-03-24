@@ -4,6 +4,7 @@
 #' @param nr the number of reads of the FASTQ file
 #' @return  table of sequnces sortted by count
 #' @return  density plot of sequence length with top 5 marked by rugs, saved as PDF file
+#' @export
 
 
 

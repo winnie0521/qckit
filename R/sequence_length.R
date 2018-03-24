@@ -5,6 +5,7 @@
 #'
 #' @return the plot of the sequence distribution among all reads
 #' @author Wenyue Xing, \email{wenyue_xing@@brown.edu}
+#' @export
 
 
 plot_sequence_length <- function(fseq,writefile=FALSE,prefix){

@@ -9,7 +9,7 @@ License: Artistic-2.0
 Encoding: UTF-8
 LazyData: false
 RoxygenNote: 6.0.1.9000
-SystemRequirements: GNU make
+SystemRequirements: GNU make, C++11
 LinkingTo: Rcpp
 Imports: 
   magrittr,

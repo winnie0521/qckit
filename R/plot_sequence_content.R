@@ -7,6 +7,7 @@
 #' @param prefix the prefix to add to the file name
 #'
 #' @return ggplot line plot of all nucleotide content inclding  A, T, G, C and N
+#' @export
 
 plotSeqContent<- function(fseq,nr,nc,writefile=FALSE,prefix){
 

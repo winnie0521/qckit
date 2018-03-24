@@ -5,6 +5,7 @@
 #' @param prefix the prefix for the output file of the plot
 #'
 #' @return plot of mean quality score per read
+#' @export
 
 
 

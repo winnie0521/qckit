@@ -4,6 +4,7 @@
 #' @param writefile the object indicating intent to save the plot as pdf file, set default as FALSE
 #' @param prefix the prefix for the output file of the plot
 #' @return a ggplot of the GC content acorss all positions
+#' @export
 
 GC_content_plot <- function(nc,gc_df, writefile=FALSE,prefix){
   p1 <- with(gc_df, ggplot2::ggplot(data=gc_df, ggplot2::aes(meanGC)) +ggplot2::geom_histogram(breaks=seq(0, nc, by=1)))

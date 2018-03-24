@@ -18,6 +18,7 @@ using namespace Rcpp;
 //' @param out_prefix A string giving the prefix to be used for outputs
 //' @param buffer_size An int for the number of lines to keep in memory
 //' @export
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::export]]
  void process_fastq (std::string infile, std::string out_prefix, int buffer_size)
   {
@@ -223,6 +224,7 @@ using namespace Rcpp;
 //'
 //' Description
 //' @param inmat A matrix of score vectors per position
+// [[Rcpp::plugins(cpp11)]]
 
 std::vector<std::vector<int> > qual_score_per_position (const std::map<int,std::vector<uint8_t> > &inmat)
 {
@@ -275,6 +277,7 @@ std::vector<std::vector<int> > qual_score_per_position (const std::map<int,std::
 //' Calculate the mean quality score per read of the FASTQ gzipped file
 //' @param infile A string giving the path for the fastqfile
 //' @export
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::export]]
 Rcpp::List qual_score_per_read (std::string infile)
 {
@@ -445,6 +448,7 @@ Rcpp::List qual_score_per_read (std::string infile)
 //' Calculate GC nucleotide sequence content per read of the FASTQ gzipped file
 //' @param infile A string giving the path for the fastqfile
 //' @export
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::export]]
 Rcpp::NumericVector gc_per_read (std::string infile)
 {
@@ -505,6 +509,7 @@ Rcpp::NumericVector gc_per_read (std::string infile)
 //' @param min_size An int for thhresholding over representation
 //' @param buffer_size An int for the number of lines to keep in memory
 //' @export
+// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::export]]
 std::map<std::string,int> calc_over_rep_seq (std::string infile, std::string out_prefix,
                                              int min_size=5, int buffer_size = 1000000)
