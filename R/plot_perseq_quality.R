@@ -12,7 +12,7 @@
 plot_perseq_quality <- function(infile,writefile=FALSE,prefix){
 
   score_sequence_mean <- data.frame(qual_score_per_read(infile))
-  colnames(score_sequence_mean) <- c("sequencemean")
+  colnames(score_sequence_mean)[1] <- c("sequencemean")
 
   p1 <- with(score_sequence_mean, ggplot2::ggplot(data=score_sequence_mean, ggplot2::aes(sequencemean)) +ggplot2::geom_histogram())
   p_perseq_quality <- p1 + ggplot2::labs(title = "Histograms of per sequence mean quality ", x= "Mean Quality Score" , y = "Frequency")

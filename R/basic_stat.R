@@ -9,7 +9,7 @@
 
 basic_stat <- function(infile,writefile=FALSE,prefix){
 
-  basic_stat <- qual_score_per_read(infile)
+  basic_stat <- data.frame(qual_score_per_read(infile))
   if (writefile==TRUE) write.csv(file=paste0(prefix,"basicstat.csv"),basic_stat)
   return(basic_stat)
 }

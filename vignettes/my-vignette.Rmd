@@ -64,7 +64,16 @@ Also a quote using `>`:
 
 #I. Pre-processing of FASTQ files
 
+```{R,include=FALSE}
+
+library(devtools)
+install_github("winnie0521/qckit",ref="cplusdocumentation")
+
+
+```
+
 ```{r}
+library(qckit)
 infile <- system.file("extdata", "10^5_reads_test.fq.gz", package = "qckit")
 
 ```
@@ -73,7 +82,7 @@ infile <- system.file("extdata", "10^5_reads_test.fq.gz", package = "qckit")
 
 ##1.  quality score per sequence statistics
 
-The 
+basic_statistics function calculates the quality score per sequence statistics including mean, median and 
 
 ```{r}
 
