@@ -11,7 +11,7 @@ LazyData: false
 RoxygenNote: 6.0.1.9000
 SystemRequirements: GNU make, C++11
 LinkingTo: Rcpp
-Imports: 
+Imports:
   magrittr,
   ggplot2,
   dplyr,
@@ -25,3 +25,6 @@ Imports:
   stats,
   utils,
   Rcpp
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
