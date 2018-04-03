@@ -8,13 +8,7 @@
 #' @return boxplot of per position quality score distribution
 
 
-plot_quality_score <- function(bs, writefile=FALSE,prefix){
-
-  basic_statistics <- data.frame(q01 = bs$q01_per_position,
-                                 q25 = bs$q25_per_position,
-                                 median = bs$q50_per_position,
-                                   q75 = bs$q75_per_position,
-                                 q99 = bs$q99_per_position)
+plot_quality_score <- function(basic_statistics, writefile=FALSE,prefix){
 
   colnames(basic_statistics) <- c("min","q25","median","q75","max")
   basic_statistics$index = seq(1,nrow(basic_statistics),1)

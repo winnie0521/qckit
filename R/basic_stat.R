@@ -9,7 +9,12 @@
 
 basic_stat <- function(infile,writefile=FALSE,prefix){
 
-  basic_stat <- data.frame(qual_score_per_read(infile))
-  if (writefile==TRUE) write.csv(file=paste0(prefix,"basicstat.csv"),basic_stat)
-  return(basic_stat)
+  qs <- qual_score_per_read(infile)
+  bs <- data.frame(q01 = qs$q01_per_position,
+                                 q25 = qs$q25_per_position,
+                                 median = qs$q50_per_position,
+                                 q75 = qs$q75_per_position,
+                                 q99 = qs$q99_per_position)
+  if (writefile==TRUE) write.csv(file=paste0(prefix,"basicstat.csv"),bs)
+  return(bs)
 }
