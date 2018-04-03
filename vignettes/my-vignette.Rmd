@@ -82,12 +82,15 @@ infile <- system.file("extdata", "10^5_reads_test.fq.gz", package = "qckit")
 
 ##1.  quality score per sequence statistics
 
-basic_statistics function calculates the quality score per sequence statistics including mean, median and 
+*basic_statistics* function calculates the quality score per sequence statistics including mean, median and quantile
 
 ```{r}
 
-basic_statistics <- qckit::basic_stat(infile)
+basic_statistics <- basic_stat(infile)
 knitr::kable(head(basic_statistics))
-
+plot_quality_score(basic_statistics,writefile=FALSE)
 ```
 
+##2. nucleotide sequence content
+
+*
