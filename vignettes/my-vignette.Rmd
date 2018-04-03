@@ -33,11 +33,10 @@ The `html_vignette` template includes a basic CSS theme. To override this theme 
 
 ## Figures
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+```{r}
+knitr::opts_chunk$set(fig.width=6, fig.height=4,fig.align = "center") 
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+
 ```
 
 You can enable figure captions by `fig_caption: yes` in YAML:
@@ -80,9 +79,32 @@ infile <- system.file("extdata", "10^5_reads_test.fq.gz", package = "qckit")
 
 #II. Metrics of FASTQ quality control
 
-##1.  quality score per sequence statistics
 
-*basic_statistics* function calculates the quality score per sequence statistics including mean, median and quantiles. We will use the result to create a quality score distribution per position plot to present the distribution 
+##1. dimension
+
+*dimensions* function obtains the number of reads and number of positions from a seqTools processed FASTQ file. The sample file has 25,000 reads and 100 positions. 
+
+```{r}
+
+fseq <- seqTools::fastqq(infile)
+nc <- dimensions(fseq,"positions")
+nc
+
+nr <- dimensions(fseq,"reads")
+nr
+```
+
+*sequence_length* function generates distribution plot of the length of all reads. The generated plot would show the sequence length of all the sequences throughout the file. The plot is considered an indication of good data quality is all sequences have the same sequence length with no deviations. The following plot shows that all reads in the file have sequence length of 100. 
+
+```{r}
+plot_sequence_length(fseq,writefile=FALSE)
+
+
+```
+
+##2.  quality score per sequence statistics
+
+*basic_statistics* function calculates the quality score per sequence statistics including mean, median and quantiles. We will use the result to create a quality score distribution per position plot to present the overall dispersion and concentration of quality score per position of the FASTQ file. 
 
 ```{r}
 
@@ -91,6 +113,101 @@ knitr::kable(head(bs))
 plot_quality_score(bs,writefile=FALSE)
 ```
 
-##2. nucleotide sequence content
+##3. nucleotide sequence content
 
-*
+*sequence_content* calculates the total number of each nucleotide sequence content per sequence throughout the file. 
+```{r}
+
+
+scA <- sequence_content(fseq, content = "A")
+scA
+
+
+```
+
+*plot_sequence_conent* use the *sequence_content* function and plot the percentage of all nucleotide sequence content per position. The plot would be considered an indication of good data quality when the percentage of each nucleotide sequence content is not significantly larger than other nucleotide sequence contents. 
+
+```{r}
+
+plotSeqContent(fseq,nr,nc)
+
+```
+
+
+##4. GC content
+
+
+Function *GC_content* utilizes the result from the C++_calling function *GC_per_read* and produce the data frame that is more suitable for the plotting purpose as well as for saving to data file for later access. 
+
+```{r}
+
+gc_df <- GC_content(infile)
+
+knitr::kable(head(gc_df))
+
+
+```
+
+
+The *GC_content_plot* function takes the input from previous function and generates plot of distribution of GC nucleotide sequence content percentage. The graph would be an indication of good data quality when the  GC percentage concentrated around 30 to 50. 
+
+
+```{r}
+
+GC_content_plot(nc,gc_df)
+
+
+```
+
+
+##5. Per read sequence quality score
+
+*plot_perseq_quality* function extracts the mean quality score per read and generate a histogram of this statistics.It takes the input of the path to the gzipped FASTQ files. It also enables plot saving if set *writefile* to TRUE and input a *prefix* value to customize name of saved file. The histogram would be considered an indication of good data quality when the majority of reads have high quality score(around 30). If a significant portion of read are with low quality score, say less than 20, then data is problematic. 
+
+
+```{r}
+
+plot_perseq_quality(infile,writefile=FALSE)
+
+```
+
+##6. Kmers & Overrepresented Kmers
+
+*kmer_count* function produces the per position kmer count with given path to the FASTQ file and the kmer length specified. 
+
+```{r}
+
+km <- Kmer_count(infile,k=6)
+knitr::kable(km[1:20,1:10])
+
+```
+
+
+The function generates list of overrepresented kmers with its maximum obs/exp ratio and the position of maximum obs/exp ratio. 
+
+
+```{r}
+
+overkm <-overrep_kmer(infile,k=7,nc,nr)
+knitr::kable(overkm)
+
+
+```
+
+##6. Overrepresented Sequence
+
+```{r}
+
+overrep_seq <- qckit::overrepresented_sequence(infile,nr,"test")
+knitr::kable(overrep_seq)
+
+```
+
+```{r}
+
+
+overrep_plot(overrep_seq,FALSE)
+
+
+```
+
