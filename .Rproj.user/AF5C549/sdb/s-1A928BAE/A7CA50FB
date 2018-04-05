@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "*.o\n*.so\n*.dll\n",
+    "created" : 1522785700564.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2830259412",
+    "id" : "A7CA50FB",
+    "lastKnownWriteTime" : 1522785416,
+    "last_content_update" : 1522785416,
+    "path" : "~/Documents/Rdata/qckitW/src/.gitignore",
+    "project_path" : "src/.gitignore",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "gitignore"
+}

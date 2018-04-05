@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: qckitW\nType: Package\nTitle: What the Package Does (Title Case)\nVersion: 0.1.0\nAuthor: Who wrote it\nMaintainer: Wenyue Xing <wenyue_xing@brown.edu>\nDescription: More about what it does (maybe more than one line)\n    Use four spaces when indenting paragraphs within the Description.\nLicense: What license is it under?\nEncoding: UTF-8\nLazyData: true\nLinkingTo: Rcpp\nImports: Rcpp\nRoxygenNote: 6.0.1\n",
+    "created" : 1522787210487.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3944204215",
+    "id" : "EFE2C683",
+    "lastKnownWriteTime" : 1522787254,
+    "last_content_update" : 1522787254948,
+    "path" : "~/Documents/Rdata/qckitW/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

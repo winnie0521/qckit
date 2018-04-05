@@ -1,0 +1,65 @@
+[
+    {
+        "definitions" : [
+        ],
+        "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/gzstream.cpp",
+        "file_last_write" : 1520953770
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/gzstream.h",
+        "file_last_write" : 1520953770
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/read_fastq.cpp",
+                "kind" : 6,
+                "line" : 23,
+                "name" : "process_fastq(std::string, std::string, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@process_fastq#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#"
+            },
+            {
+                "column" : 32,
+                "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/read_fastq.cpp",
+                "kind" : 6,
+                "line" : 229,
+                "name" : "qual_score_per_position(const std::map<int, std::vector<uint8_t> > &)",
+                "parent_name" : "",
+                "usr" : "c:@F@qual_score_per_position#&1$@N@std@N@__1@C@map>#I#$@N@std@N@__1@C@vector>#c#$@N@std@N@__1@C@allocator>#c#$@N@std@N@__1@S@less>#I#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1I#S2_#"
+            },
+            {
+                "column" : 12,
+                "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/read_fastq.cpp",
+                "kind" : 6,
+                "line" : 282,
+                "name" : "qual_score_per_read(std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@qual_score_per_read#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 21,
+                "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/read_fastq.cpp",
+                "kind" : 6,
+                "line" : 453,
+                "name" : "gc_per_read(std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@gc_per_read#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 27,
+                "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/read_fastq.cpp",
+                "kind" : 6,
+                "line" : 514,
+                "name" : "calc_over_rep_seq(std::string, std::string, int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@calc_over_rep_seq#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#I#"
+            }
+        ],
+        "file" : "/Users/wenyuexing/Documents/Rdata/qckitW/src/read_fastq.cpp",
+        "file_last_write" : 1521128547
+    }
+]

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' @useDynLib qckitW\n#' @importFrom Rcpp sourceCpp\nNULL\n",
+    "created" : 1522786871180.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3635545565",
+    "id" : "3A794CDC",
+    "lastKnownWriteTime" : 1522786981,
+    "last_content_update" : 1522786981373,
+    "path" : "~/Documents/Rdata/qckitW/R/usercpp.R",
+    "project_path" : "R/usercpp.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

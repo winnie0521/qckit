@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "PKG_CFLAGS+=$(shell echo 'zlibbioc::pkgconfig(\"PKG_CFLAGS\")' | \"${R_HOME}/bin/R\" --vanilla --slave)\nPKG_LIBS+=$(shell echo 'zlibbioc::pkgconfig(\"PKG_LIBS_shared\")' | \"${R_HOME}/bin/R\" --vanilla --slave)\nCXX_STD = CXX11\n",
+    "created" : 1522785695625.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1901327739",
+    "id" : "8FAA987A",
+    "lastKnownWriteTime" : 1521813945,
+    "last_content_update" : 1521813945,
+    "path" : "~/Documents/Rdata/qckitW/src/Makevars",
+    "project_path" : "src/Makevars",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "makefile"
+}

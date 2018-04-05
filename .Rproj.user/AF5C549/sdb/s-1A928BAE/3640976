@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "CXX_STD = CXX11\nPKG_CXXFLAGS=`${R_HOME}/bin/Rscript -e \"Rcpp:::CxxFlags()\"`\nPKG_LIBS=`${R_HOME}/bin/Rscript -e \"Rcpp:::LdFlags()\"`\nZLIB_CFLAGS+=$(shell echo 'zlibbioc::pkgconfig(\"PKG_CFLAGS\")'| \"${R_HOME}/bin/R\" --vanilla --slave)\nPKG_LIBS+=$(shell echo 'zlibbioc::pkgconfig(\"PKG_LIBS_shared\")' |\"${R_HOME}/bin/R\" --vanilla --slave)\n%.o: %.cpp\n\t$(CC) $(ZLIB_CFLAGS) $(ALL_CPPFLAGS) $(ALL_CFLAGS) -c $< -o $@\n",
+    "created" : 1522785697470.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "93944145",
+    "id" : "3640976",
+    "lastKnownWriteTime" : 1521814945,
+    "last_content_update" : 1521814945,
+    "path" : "~/Documents/Rdata/qckitW/src/Makevars.win",
+    "project_path" : "src/Makevars.win",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "makefile"
+}
