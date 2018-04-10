@@ -188,20 +188,26 @@ The function generates list of overrepresented kmers with its maximum obs/exp ra
 
 ```{r}
 
-overkm <-overrep_kmer(infile,k=7,nc,nr)
-knitr::kable(overkm)
+overkm <-qckit::overrep_kmer(infile,7,nc,nr)
+knitr::kable(head(overkm,n=10))
 
 
 ```
 
 ##6. Overrepresented Sequence
 
+Taking in the output generated from *cal_over_rep_seq*, function *overrepresented_sequence* produce the overrepresented sequence table by selecting the unique sequences that have counts larger than 0.1% of the total reads of the data file. The results would be displayed as table with decreasing order of counts. 
+
+
 ```{r}
 
 overrep_seq <- qckit::overrepresented_sequence(infile,nr,"test")
-knitr::kable(overrep_seq)
+knitr::kable(head(overrep_seq,n = 5))
 
 ```
+
+Function *overrepresented_plot* would take the overrepresented sequence table as input and present a density plot of the counts and mark the top 5 overrepresented sequence in red. 
+
 
 ```{r}
 
